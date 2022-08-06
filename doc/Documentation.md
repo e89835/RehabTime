@@ -2,6 +2,29 @@
 En este apartado está una documentación extendida de la realización de cada uno de los hitos.
 
 
+# RehabTime - Hito 1
+Para la realización de este Hito 1, es importante entender:
+- Qué es el concepto de proyecto y cómo se organiza.
+- Que los Hitos son Productos Mínimamente Viables, que recogen los deseos del usuario, aportan valor y maximizan los recursos del equipo.
+- Que las Historias de Usuario y los Roles han de estar relacionados con la lógica de negocio.
+- Que la aplicación ha de aportar:
+    - Beneficios para el usuario.
+    - Lógica de negocio.
+- Que las HU azanzan con los issues.
+- Que hay que tener un plan.
+- Que el código importa.
+
+Todo lo anterior viene explicado en: 
+- Los [apuntes](https://github.com/JJ/CC/blob/master/documentos/proyecto/1.Infraestructura.md) del profesor.
+- Los apartados [Servicios](https://jj.github.io/curso-tdd/temas/servicios.html), [Diseño](https://jj.github.io/curso-tdd/temas/dise%C3%B1o.html) y [A Programar](https://jj.github.io/curso-tdd/temas/a-programar.html) en el curso [TDD](https://jj.github.io/curso-tdd/) del profesor.
+- En la [guía de Atlassian](https://www.atlassian.com/es/agile/project-management/user-stories) sobre las HU.
+- En el [blog de Roman Pichler](https://www.romanpichler.com/blog/10-tips-writing-good-user-stories/) con pistas para escribir buenas HU.
+- En el [blog de Roman Pichler](https://www.romanpichler.com/blog/agile-scenarios-and-storyboards/) donde explica los escenarios ágiles y los _storyboards_.
+- En el [blog Zenhub](https://zenhub.medium.com/beginners-guide-to-using-epics-and-milestones-in-github-c0052bfa9de0) sobre cómo usar épicas en GitHub.
+ 
+
+
+
 # RehabTime - Hito 0
 ### Descarga de Git
 - Para descargar Git, acudimos al [centro de descargas](https://git-scm.com/download/win). Descargamos y ejecutamos el instalador.

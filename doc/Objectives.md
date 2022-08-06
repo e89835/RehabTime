@@ -8,3 +8,9 @@
 - [X] Configuración de nombre @e89835 y correo electrónico *har...@hotmail.com*.
 - [X] Edición del perfil con imagen de Yamaha, nombre y universidad.
 - [X] Activado el MFA usando MS Authenticator. Añadir SMS como método alternativo.
+
+
+## RehabTime - Hito 1
+- [X] Cubrir el desarrollo del proyecto en la asignatura.
+- [X] Nomenclatura US o HU en las Historias de usuario, etiqueta y título.
+- [X] Crédito adicional: añadir clases a implementar sin código dentro de _cc.yaml_.

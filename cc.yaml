@@ -1,4 +1,4 @@
-entidad:
+entidad: 
   - src/App.js
   - src/Contact.js
   - src/Create.js

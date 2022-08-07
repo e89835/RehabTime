@@ -12,6 +12,8 @@ Bienvenido a la página principal del proyecto RehabTime, dentro de CC en la con
   - [HU4](https://github.com/e89835/RehabTime/blob/main/doc/US4.md).
   - [HU5](https://github.com/e89835/RehabTime/blob/main/doc/US5.md).
 
+- En el siguiente enlace se encuentra el - [MVP](https://github.com/e89835/RehabTime/blob/main/doc/MVP.md).
+
 - En este enlace se encuentran los [objetivos de los Hitos](https://github.com/e89835/RehabTime/blob/main/doc/Objectives.md) alcanzados. 
 
 - En este enlace se encuentra la [licencia](https://github.com/e89835/RehabTime/blob/main/LICENSE).

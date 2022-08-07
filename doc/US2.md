@@ -1,4 +1,4 @@
-# Historia de Usuario 2
+# Historia de Usuario 2 
 Como paciente, quiero poder realizar el seguimiento de mis ejercicios realizados prescritos.
 
 Esta HU genera los siguientes issues:

@@ -1,4 +1,4 @@
-# Historia de Usuario 1
+# Historia de Usuario - 1
 Como administrador, quiero poder mejorar el seguimiento de los ejercicios realizados por los pacientes.
 
 Esta HU genera los siguientes issues:

@@ -1,4 +1,4 @@
-# Historia de Usuario 5
+# Historia de Usuario 5 
 Como usuario (admin y paciente), quiero poder elegir modo día o noche en la aplicación.
 
 Esta HU genera los siguientes issues:

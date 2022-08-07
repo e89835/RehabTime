@@ -22,6 +22,10 @@ Todo lo anterior viene explicado en:
 - En el [blog de Roman Pichler](https://www.romanpichler.com/blog/agile-scenarios-and-storyboards/) donde explica los escenarios ágiles y los _storyboards_.
 - En el [blog Zenhub](https://zenhub.medium.com/beginners-guide-to-using-epics-and-milestones-in-github-c0052bfa9de0) sobre cómo usar épicas en GitHub.
  
+Por último, para la creación de la etiqueta _user-stories_, seguimos la [documentación oficial](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels#creating-a-label).
+Comprobamos que tenemos la etiqueta creada en el apartado Issues / Etiquetas:
+![image](https://user-images.githubusercontent.com/91733073/183288466-27de9332-d922-4859-9a89-066639c65dc0.png)
+
 
 
 

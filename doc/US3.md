@@ -1,4 +1,4 @@
-# Historia de Usuario 3
+# Historia de Usuario 3 
 Como paciente, quiero poder filtrar mis ejercicios prescritos.
 
 Esta HU genera los siguientes issues:

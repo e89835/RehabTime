@@ -1,7 +1,9 @@
 # Descripción
 
 ## RehabTime 
-El proyecto propuesto es una aplicación para rehabilitación y deporte físico moderado. 
+El proyecto propuesto es una aplicación para rehabilitación y deporte físico moderado. Dichaa aplicación consiste en recomendar ejercicios para los usuarios.
+La aplicación permite su despliegue en la nube, con una separación entre la parte de acceso a los ejercicios _frontend_ y el almacenamiento de datos _backend_. 
+Según vayan avanzando los usuarios, y atendiendo a su _feedback_, se les cambiarán los ejercicios propuestos para su recuperación o potenciación física.
 
 Según publica la [BBC](https://www.bbc.com/mundo/noticias-56670014), la vida sendentaria es tan perjudicial para nuestro cuerpo como fumar. Esto se basa en los siguientes estudios:
 - La profesora de la Universidad de Harvard I-Min Lee en un estudio publicado en 2012, indicaba que la inactividad aumenta los riesgos de desarrollar muchas **enfermedades crónicas como las coronarias, ataques cerebrales, diabetes de tipo 2 y ciertos tipos de cáncer**.
@@ -42,4 +44,6 @@ Mientras que entre los beneficios mentales encontramos:
 - Menor grado de ira, agresividad, etc.
 - Incrementa el bienestar general.
 
-RehabTime pretende acceder y publicar a una serie de ejercicios centrados en zonas específicas para mejorar la calidad de vida de las personas.
+RehabTime pretende acceder y publicar a una serie de ejercicios centrados en zonas específicas para mejorar la calidad de vida de las personas que usan la plataforma según sus necesidades personales.
+
+

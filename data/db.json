@@ -1,0 +1,25 @@
+{
+  "blogs": [
+    {
+      "title": "Ejercicio cuello",
+      "body": "Con el cuerpo acostado sobre una colchoneta o esterilla y con las piernas y brazos extendidos, levanta tu cabeza hasta que el mentón toque o se acerque a tu pecho, manteniendo la posición por unos pocos segundos.",
+      "author": "juanjo",
+      "likes": 5,
+      "image": "icuello",
+      "comments": [
+        "Comentario 1 test",
+        "Comentario 2 test 2"
+      ],
+      "id": 1
+    },
+    {
+      "title": "Ejercicio rodilla",
+      "body": "Pasos laterales. Coloca una cinta elástica atada entre los tobillos. Debe quedar tirante con tus piernas abiertas la anchura de la cadera. Rodillas semiflexionadas. Separa la pierna lateralmente y desplázate hacia un lado y después hacia el otro.",
+      "author": "juanjo",
+      "likes": 2,
+      "image": "irodilla",
+      "comments": [],
+      "id": 2
+    }
+  ]
+}

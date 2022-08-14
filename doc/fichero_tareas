@@ -1,0 +1,22 @@
+make create:
+	- npx create-react-app rehabtime
+
+make run:
+	- npm run start
+	- npx json-server --watch data/db.json --port 8000
+	
+make test:
+	- npm run test
+
+make runfront:
+	- npm run start
+
+make rundb:
+	- npx json-server --watch data/db.json --port 8000
+
+make installdeps:
+	- npm install react-router-dom@5
+	- npm install styled-components
+	- npm install --save-dev @testing-library/react
+	- npm install --save-dev @testing-library/jest-dom
+  

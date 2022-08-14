@@ -5,14 +5,13 @@ Bienvenido a la página principal del proyecto RehabTime, dentro de CC en la con
 - En el siguiente enlace encontrarás la [descripción](https://github.com/e89835/RehabTime/blob/main/doc/Description.md) del proyecto.
 
 - En el siguiente enlace se encuentra la [documentación](https://github.com/e89835/RehabTime/blob/main/doc/Documentation.md).
-- Los enlaces a las Historias de Usuario son:
-  - [HU1](https://github.com/e89835/RehabTime/blob/main/doc/US1.md).
-  - [HU2](https://github.com/e89835/RehabTime/blob/main/doc/US2.md).
-  - [HU3](https://github.com/e89835/RehabTime/blob/main/doc/US3.md).
-  - [HU4](https://github.com/e89835/RehabTime/blob/main/doc/US4.md).
-  - [HU5](https://github.com/e89835/RehabTime/blob/main/doc/US5.md).
 
-- En el siguiente enlace se encuentra el - [MVP](https://github.com/e89835/RehabTime/blob/main/doc/MVP.md).
+- En el enlace [fichero tareas](https://github.com/e89835/RehabTime/blob/main/doc/fichero_tareas) se encuentran los comandos para crear, ejecutar y testear el proyecto.
+    - Aunque la aplicación se genera automáticamente con el comando `npx create-react-app@latest rehabtime`, se recomienda usar el comprimido _[node_modules](https://mega.nz/file/fB0RGJQS#ZzmttG0TOHFAYv974PQNn0Th6_Jio4NAm6h2oOQNAR4)_ al truncar GitHub la carpeta subida _node_modulos_ a 1K ficheros, omitiendo 62 entradas.
+
+- Los enlaces a las Historias de Usuario están en la carpeta [doc](https://github.com/e89835/RehabTime/blob/main/doc/): [HU1](https://github.com/e89835/RehabTime/blob/main/doc/US1.md), [HU2](https://github.com/e89835/RehabTime/blob/main/doc/US2.md), [HU3](https://github.com/e89835/RehabTime/blob/main/doc/US3.md), [HU4](https://github.com/e89835/RehabTime/blob/main/doc/US4.md) y [HU5](https://github.com/e89835/RehabTime/blob/main/doc/US5.md).
+
+- En el siguiente enlace se encuentra el [MVP](https://github.com/e89835/RehabTime/blob/main/doc/MVP.md).
 
 - En este enlace se encuentran los [objetivos de los Hitos](https://github.com/e89835/RehabTime/blob/main/doc/Objectives.md) alcanzados. 
 

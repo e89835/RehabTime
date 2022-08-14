@@ -14,3 +14,10 @@
 - [X] Cubrir el desarrollo del proyecto en la asignatura.
 - [X] Nomenclatura US o HU en las Historias de usuario, etiqueta y título.
 - [X] Crédito adicional: añadir clases a implementar sin código dentro de _cc.yaml_.
+
+
+## RehabTime - Hito 2
+- [X] Elegir y configurar el gestor de tareas.
+- [X] Elegir y usar la biblioteca de aserciones.
+- [X] Elegir y usar el marco de pruebas.
+- [X] Avanzar en el código, tests incluídos e HU, con uso correcto de milestones.

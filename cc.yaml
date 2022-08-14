@@ -1,5 +1,20 @@
+# RehabTime
+
+version: 1.2
+
+lenguaje: javascript
+
+test:
+  - src/test/App.test.js
+  - src/test/Contact.test.js
+  - src/test/Create.test.js
+  - src/test/Home.test.js
+  - src/test/Search.test.js
+
+
 entidad: 
   - src/App.js
   - src/Contact.js
   - src/Create.js
   - src/Home.js
+  - src/Search.js

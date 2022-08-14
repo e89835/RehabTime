@@ -2,6 +2,54 @@
 En este apartado está una documentación extendida de la realización de cada uno de los hitos.
 
 
+# RehabTime - Hito 2
+Para la realización del Hito 2, se pide:
+- Elegir y configurar un gestor de tareas.
+    - En nuestro caso elegimos el gestor de tareas **NPM**, dentro del eje estándar dentro de los gestores de tareas. 
+        - NPM (Node Package Manager) es el gestor de tareas de JavaScript, mantenido por nmp INC.
+        - Consiste en un cliente de línea de comandos también llamado npm y una base de datos en línea de paquetes públicos y privados. 
+        - Se accede al registro a través del cliente, y los paquetes disponibles se buscan a través del sitio web de npm. 
+        - Para mayor detalle, se puede consultar la [documentación oficial](https://docs.npmjs.com/about-npm) así como la entrada de [Wikipedia](https://en.wikipedia.org/wiki/Npm_(software)).
+
+- Elegir y usar una biblioteca de aserciones.
+    - En nuestro caso elegimos la biblioteca de aserciones **getByText**. 
+        - getByText forma parte de ByText, cuya función es buscar todos los elementos que tengan un nodo de texto que coincida con el texto a encontrar.
+        - Podemos encontrar más info y ejemplos en la [documentación oficial](https://testing-library.com/docs/queries/bytext/).
+
+- Elegir y usar un marco de pruebas.
+    - En nuestro caso elegimos el marco de pruebas **React-Testing-Library** y **JEST**. 
+        - La biblioteca de pruebas de React fue creada por Kent Dodds y cuenta con un amplio apoyo en la comunidad de desarrolladores. Esta librería es un conjunto de utilidades de React DOM y permite probar de manera sencilla los componentes y simular el comportamiento de usuario. Entre sus ventajas está la consulta de elementos dentro de textos, etiquetas, etc., el disparo de cualquier evento y la espera de que aparezca un elemento.
+        - Jest es el marco de trabajo más popular para pruebas con más de 16 millones de descargas a la semana. Fue creado y es mantenido por Facebook. Además, también ha sido adoptado por Airbnb, Uber y otras empresas. Jest viene con funciones de ejecución de pruebas y aserción. Entre sus mayores ventajas está su rapidez, realización de pruebas de métodos instantáneos, paralelización y asíncronos, simulación de funciones, sintaxis estándar y gran compatibilidad.
+
+Una vez que hemos elegido las herramientas, instalamos JEST y RTL con los comandos:
+´npm install --save-dev @testing-library/react´
+´npm install --save-dev @testing-library/jest-dom´
+
+Comprobamos que está instalado correctamente mirando las dependencias en _package.json_:
+
+![image](https://user-images.githubusercontent.com/91733073/184546535-74fe77e8-d807-44f3-ad4a-781d6c52b705.png)
+
+Ahora programamos los ficheros JavaScript siguiendo las Historias de Usuario (HU - US) del Hito 1:
+- App.js
+- Contact.js
+- Create.js
+- Home.js
+- Search.js
+
+Y hacemos los tests para los ficheros:
+- App.test.js
+- Contact.test.js
+- Create.test.js
+- Home.test.js
+- Search.test.js
+
+Por último, ejecutamos los tests y comprobamos que se han realizado correctamente:
+
+![image](https://user-images.githubusercontent.com/91733073/184546760-e630d1ca-9e1b-494a-994d-cb56919c1c20.png)
+
+
+
+
 # RehabTime - Hito 1
 Para la realización de este Hito 1, es importante entender:
 - Qué es el concepto de proyecto y cómo se organiza.

@@ -2,6 +2,136 @@
 En este apartado está una documentación extendida de la realización de cada uno de los hitos.
 
 
+# RehabTime - Hito 3
+Primero, comenzamos eligiendo [Node Apline](https://hub.docker.com/_/node) ejecutado en [Docker](https://docs.docker.com/get-started/overview/) como contenedor base.
+- Elegimos **Docker** por ser un PaaS abierto, por su facilidad de uso y por su amplia utilización en la actualidad. Docker permite el despliegue de aplicaciones dentro de contenedores, proporcionando una capa adicional de abstración y automatización. Docker usa características Linux, permitiendo que varios contenedores se lancen dentro de una única instancia. Además, el kernel de Linux aisla la vista que tiene una aplicación de su entorno operativo, además de proporcionar aislamiento de recursos. Por último, la compatibilidad es muy elevada, pudiendo ejecutarse en local, nubes públicas, privadas y/o mixtas. Podemos ver más información en la [documentación oficial](https://docs.docker.com/) y en [Wikipedia](https://en.wikipedia.org/wiki/Docker_(software)).
+- Elegimos **Node-Alpine** por ser una distribución basada en Linux diseñada para ser pequeña, simple y segura. A diferencia de la mayoría de las otras distribuciones de Linux, Alpine usa *musl* y *BusyBox* en lugar de *Glibc* y *GNU Core Utilities* y *OpenRC* para su sistema de inicio en lugar de *systemd*. Por razones de seguridad, Alpine compila todos los archivos binarios del espacio de usuario como ejecutables independientes de la posición con protección contra destrucción de pila. Debido a su pequeño tamaño, se usa comúnmente en contenedores que brindan tiempos de arranque rápidos. Podemos ver más información en la [documentación oficial](https://hub.docker.com/_/node).
+
+## Dockerfile
+Para crear el Dockerfile, primero comenzamos por la instalación de [Docker Desktop](https://www.docker.com/products/docker-desktop/):
+
+![image](https://user-images.githubusercontent.com/91733073/185759743-e05751b3-28e5-4c9d-85a2-cb8c1bbe6eb0.png)
+
+A continuación, instalamos la extensión de Docker en VS Code:
+
+![image](https://user-images.githubusercontent.com/91733073/185759765-e6c03ca5-c7d7-4dc5-b978-6845f00781bb.png)
+
+El siguiente paso es crear los ficheros necesarios para Docker, para ello clicamos Ctrl+Shift+P:
+
+![image](https://user-images.githubusercontent.com/91733073/185759778-21f1dbe3-941e-4aba-83ed-ba7eac22040a.png)
+
+Seleccionamos *Add Docker Compose files to Workspace* y siguientes predeterminados, y escribimos nuestro fichero Docker. Una vez terminado, construimos la imagen con el comando `docker build -t node-docker --target test`. Para esta imagen estamos usando [Node 14.15.4](https://nodejs.org/en/blog/release/v14.15.4/).
+
+![image](https://user-images.githubusercontent.com/91733073/185759895-9df6b8ff-7f00-4a17-a158-000359e03b0c.png)
+
+Seguidamente, nos vamos a Docker Desktop y comprobamos que la imagen ha sido creada:
+
+![image](https://user-images.githubusercontent.com/91733073/185759937-a288d933-6ae8-4349-bd9f-7a4d5c91538a.png)
+
+Creamos el contenedor _strange_perlman_ y lo lanzamos en línea de comandos (CLI): 
+
+![image](https://user-images.githubusercontent.com/91733073/185759964-12771ec5-a1bd-418b-8dc1-817a4f561c4f.png)
+
+Se nos abre nuestro contenedor, con lo que ejecutamos los tests desde la CLI del contenedor:
+
+![image](https://user-images.githubusercontent.com/91733073/185759988-7c9f89a8-818b-4e88-a4c3-7e6a5f3f5d8a.png)
+
+Vemos que la suite de test se ejecutan y pasan correctamente:
+
+![image](https://user-images.githubusercontent.com/91733073/185760000-16e1e250-f10c-444a-843f-612e8dc7e73c.png)
+
+### Alpine
+Con el apartado anterior ya estaríamos, pero el contenedor tiene un tamaño de 1.45 GB y se puede optimizar. Para ello, elegimos la versión [Alpine](https://hub.docker.com/_/alpine) 10:
+
+![image](https://user-images.githubusercontent.com/91733073/185760345-3b3a03c9-82cf-4188-91cf-7d0873d0e29e.png)
+
+Construimos la imagen con el comando `docker build -t node-alpine --target test` y nos vamos a Docker Desktop a comprobar que se ha creado correctamente:
+
+![image](https://user-images.githubusercontent.com/91733073/185760363-abd8c874-d720-45cb-a6b2-be778f0c7ea2.png)
+
+Creamos el contenedor _dazzling_edison_ y lo lanzamos en línea de comandos (CLI):
+
+![image](https://user-images.githubusercontent.com/91733073/185760425-3fe0f9ac-9d8e-4492-8eb8-52b6b94f754d.png)
+
+Por último, ejecutamos la suite de tests y vemos que se ejecutan correctamente:
+
+![image](https://user-images.githubusercontent.com/91733073/185760448-dbfd50f3-7d83-426b-8d3e-430a393288ea.png)
+
+De esta manera, conseguimos el mismo resultado (la correcta ejecución de los tests) pero al usar la imagen Alpine, hemos pasado de casi 1.5 GB a algo más de 500MB, una reducción a casi un 33% del total.
+
+## Docker Hub
+Para subir la imagen a [Docker Hub](https://hub.docker.com/), nos vamos a Docker Desktop, y en la imagen que queremos subir, clicamos en los tres puntos y hacemos clic en _Push to Hub_: 
+
+![image](https://user-images.githubusercontent.com/91733073/185760635-7bd4d8f5-11da-4bb0-88f9-d98fffdcaf1c.png)
+
+El siguiente paso es abrir una terminal, hacer login, etiquetar la imagen y subirla usando _push_:
+```
+login -u e89835
+docker tag node-alpine:latest e89835/rehabtime:rehabtime-node
+docker push e89835/rehabtime:rehabtime-node
+```
+![image](https://user-images.githubusercontent.com/91733073/185760713-811b658e-f6f5-4f06-8b03-e50a9d98189f.png)
+
+Pasados unos segundos, vemos que ha terminado con éxito, y podemos verla en Docker Hub:
+
+![image](https://user-images.githubusercontent.com/91733073/185760750-d4f58773-6f06-4f06-a031-1c861d8e3880.png)
+
+![image](https://user-images.githubusercontent.com/91733073/185760754-f05cc0b9-1c9e-42cb-9cee-fe281d6ab125.png)
+
+Por último, actualizamos la información y podemos acceder a la imagen con este [enlace](https://hub.docker.com/repository/docker/e89835/rehabtime):
+
+![image](https://user-images.githubusercontent.com/91733073/185760777-98b6a825-de58-4434-9ab8-9541ee34b63c.png)
+
+Para un uso futuro, y automatizar la subida a Docker Hub, nos creamos el siguiente script:
+
+![image](https://user-images.githubusercontent.com/91733073/185760812-ad0683fb-08ec-4a94-b71a-7bf726b33ead.png)
+
+Al lanzar el script, necesitamos poner dos argumentos, siendo estos nuestro usuario y contraseña.
+
+## GitHub Container Registry
+Elegimos GitHub Container Registry ([GHCR](https://docs.github.com/en/packages)) que es una versión mejorada y rediseñada de paquetes de GitHub. Además de reemplazar al servicio Paquetes Docker representa un cambio fundamental en la forma que GitHub va a proporcionar paquetes a sus usuarios, dado que vincula los paquetes a organizaciones y cuentas en lugar de repositorios. 
+GHCR cuenta con su propia URL: ghcr.io, y también representa un paso más hacia un enfoque nativo de la nube para los flujos de trabajo CI/CD.
+
+Para usarlo, comenzamos por crear nuestro PAT ([Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)). Nos vamos a la versión web, Herramientas / PAT:
+
+![image](https://user-images.githubusercontent.com/91733073/185761163-00f606c4-d4c0-4013-b4c5-706cd7a0e751.png)
+
+Y creamos un PAT llamado CR_PAT marcando las opciones _repo_, _write_ y _delete_:
+
+![image](https://user-images.githubusercontent.com/91733073/185761218-a57d830d-7db6-4ea1-9639-38233e63b026.png)
+
+Después, abrimos la [Git Bash](https://gitforwindows.org/) y exportamos la clave. Comprobamos el funcionamiento haciendo login usando dicha clave:
+
+![image](https://user-images.githubusercontent.com/91733073/185761317-4494965f-b59d-4336-86c9-1464152f18e4.png)
+
+A continuación, añadimos la etiqueta y hacemos push de la imagen en GHCR:
+
+![image](https://user-images.githubusercontent.com/91733073/185761326-2ef193f0-2269-4950-b88e-f9a641f79d44.png)
+
+Una vez terminado, nos vamos a GitHub web, y en paquetes, vemos que se ha creado correctamente nuestro paquete:
+
+![image](https://user-images.githubusercontent.com/91733073/185761345-f3eac5d9-822f-49ba-bf32-5a8a88266f7e.png)
+
+El paquete por defecto se crea como privado, así que lo hacemos público en las herramientas del paquete creado:
+
+![image](https://user-images.githubusercontent.com/91733073/185761383-366ab9eb-11bc-4643-989f-dfd52f198f3f.png)
+
+Y lo enlazamos al repositorio de la aplicación:
+
+![image](https://user-images.githubusercontent.com/91733073/185761393-3596b012-fd34-47c3-9840-205a148359fa.png)
+
+Con lo que ahora podemos acceder directamente a través del [enlace público](https://github.com/e89835?tab=packages) y desde el [repositorio del proyecto](https://github.com/e89835?tab=packages&repo_name=RehabTime).
+
+![image](https://user-images.githubusercontent.com/91733073/185761440-fb17637f-5b4e-40ac-8bf8-96aaa0cc8d75.png)
+
+![image](https://user-images.githubusercontent.com/91733073/185761449-325c8117-5ab6-4dcb-81b4-091248163b38.png)
+
+
+
+
+
+
+
 # RehabTime - Hito 2
 Para la realización del Hito 2, se pide:
 - Elegir y configurar un gestor de tareas.
@@ -22,8 +152,10 @@ Para la realización del Hito 2, se pide:
         - Jest es el marco de trabajo más popular para pruebas con más de 16 millones de descargas a la semana. Fue creado y es mantenido por Facebook. Además, también ha sido adoptado por Airbnb, Uber y otras empresas. Jest viene con funciones de ejecución de pruebas y aserción. Entre sus mayores ventajas está su rapidez, realización de pruebas de métodos instantáneos, paralelización y asíncronos, simulación de funciones, sintaxis estándar y gran compatibilidad.
 
 Una vez que hemos elegido las herramientas, instalamos JEST y RTL con los comandos:
-´npm install --save-dev @testing-library/react´
-´npm install --save-dev @testing-library/jest-dom´
+```
+npm install --save-dev @testing-library/react
+npm install --save-dev @testing-library/jest-dom
+```
 
 Comprobamos que está instalado correctamente mirando las dependencias en _package.json_:
 

@@ -38,5 +38,25 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "publishConfig": {
+    "e89835:registry": "https://npm.pkg.github.com"
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/e89835/RehabTime.git"
+  },
+  "keywords": [
+    "rehabtime",
+    "ce22"
+  ],
+  "author": "e89835",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/e89835/RehabTime/issues"
+  },
+  "homepage": "https://github.com/e89835/RehabTime#readme"
 }

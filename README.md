@@ -13,6 +13,8 @@ Bienvenido a la página principal del proyecto RehabTime, dentro de CC en la con
 
 - Para el testeo de la aplicación, se ha usado el gestor de tareas **NPM** y el marco de pruebas **Jest** y **RTL**. La justificación más detallada se encuentra en la [documentación del H2](https://github.com/e89835/RehabTime/blob/main/doc/Documentation.md#rehabtime---hito-2).
 
+- Para los contenedores, se usa la distribución [Alpine](https://hub.docker.com/_/alpine) Node 10 en contenedor [Docker](https://docs.docker.com/get-started/overview/). La imagen resultante se sube a [Docker Hub](https://hub.docker.com/) y a GitHub Container Registry ([GHCR](https://github.com/features/packages)). Para más detalle ver [aquí](https://github.com/e89835/RehabTime/blob/main/doc/Documentation.md#rehabtime---hito-3).
+
 - En el siguiente enlace se encuentra el [MVP](https://github.com/e89835/RehabTime/blob/main/doc/MVP.md).
 
 - En este enlace se encuentran los [objetivos de los Hitos](https://github.com/e89835/RehabTime/blob/main/doc/Objectives.md) alcanzados. 

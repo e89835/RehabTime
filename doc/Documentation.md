@@ -50,6 +50,66 @@ Por último, ejecutamos los tests y comprobamos que se han realizado correctamen
 
 
 
+# Rehabtime - Creación aplicación
+Nuestra aplicación se hará en [React](https://es.reactjs.org/), que es una bilbioteca JavaScript para construir interfaces de usuario.
+Comenzaremos por crear nuestra aplicación, donde nos iremos a la carpeta donde queramos guardar el proyecto, y ejecutaremos el comando:
+
+`npx create-react-app@latest rehabtime`
+
+Esto empezará a crear la aplicación como muestra la siguiente imagen:
+
+![image](https://user-images.githubusercontent.com/91733073/185757749-7528d4f6-e32e-43b2-81d3-fcce50f79c15.png)
+
+Una vez terminado, obtenemos la imagen siguiente:
+
+![image](https://user-images.githubusercontent.com/91733073/185757763-6dd3e9fb-77a7-44d6-87c5-2325f8df948e.png)
+
+A continuación, para abrir VS Code, nos vamos a la carpeta creada y ponemos el comando: `code .`:
+
+![image](https://user-images.githubusercontent.com/91733073/185757786-1ee72711-bbe0-4675-a6e3-199b0af4913b.png)
+
+VS Code se nos abrirá automáticamente, y veremos un ejemplo muy sencillo en React:
+
+![image](https://user-images.githubusercontent.com/91733073/185757809-8a29856c-09cb-43a0-910a-6b482cef7953.png)
+
+Y si lo ejecutamos, veremos le ejecución de la aplicación de prueba en React:
+
+![image](https://user-images.githubusercontent.com/91733073/185757839-49ac7352-7453-482f-91d4-df9758483111.png)
+
+Ahora, procedemos a instalar las dependencias mostradas en [fichero_tareas](https://github.com/e89835/RehabTime/blob/main/doc/fichero_tareas):
+```
+npm install react-router-dom@5
+npm install styled-components
+npm install --save-dev @testing-library/react
+npm install --save-dev @testing-library/jest-dom
+```
+
+Por último, procedemos a crear y programar los distintos ficheros de la aplicación:
+1. **App.js**: En este fichero es la raíz de la aplicación, en el controlamos el diseño y la navegación general. Todos los componentes tienen acceso.
+2. **Announcer.js**: En este fichero pondremos lo necesario para poder buscar mientras escribimos (search as you type).
+3. **BlogDetails.js**: En este fichero pondremos los detalles de cada entrada del blog, tendremos en especial consideración el identificador de la entrada. Esto permitirá usar la API para borrar y actualizar un elemento, por ejemplo.
+4. **BlogList.js**: En este fichero está recogida la lista de todas las entradas disponibles en el blog. Para ello, usaremos props, dado que es más reusable, dado que los props permiten pasar datos de un padre a un hijo.
+5. **Contact.js**: En este fichero vemos información sobre la aplicación.
+6. **Create.js**: En este fichero crearemos las nuevas entradas al blog.
+7. **data/db.json**: Este fichero se usará como base de datos, usando un servidor json en el puerto 8000 que tendremos que lanzar en una terminal desde VS Code. Este fichero incluirá todas las entradas del blog. Se usa esta forma para simplificar la instalación y configuración de una base de datos de un proveedor como MySQL o MongoDB.
+8. **GlobalStyles.js**: En este fichero definimos un componente y le asignamos un fondo y un color, con lo que, cuando cliquemos el botón noche, se hará la transición en el tiempo deseado (0.5 s).
+9. **Home.js**: Pantalla de bienvenida a la página.
+10. **Index.css**: En este fichero están todos los estilos de la aplicación.
+11. **NavBar.js**: Barra superior de la página, con título y los botones:
+- Home.
+- Contacto.
+- Buscar.
+- Crear blog.
+- Modo noche.
+En este fichero usaremos “Link to” en vez de “a href” para enlazar las páginas, mejorando así la eficiencia de la aplicación.
+12. **NotFound.js**:  En este fichero pondremos una página para cuando accedamos a cualquier URL no contemplada en la aplicación, es decir, el error 404.
+13. **Search.js**: En este fichero haremos las búsquedas de la aplicación.
+14. **Theme.js**: En este fichero definimos los objetos claro y oscuro, con los colores que usará el fondo de la aplicación.
+15. **useFetch.js**: En este fichero tenemos un custom hook, es decir, hacemos la lógica externa para recoger los datos, haciendo el código más reusable, poniendo el componente en un fichero aparte para poder reutilizarlo exportándolo, en vez de tener que reescribirlo cada vez.
+Además, usaremos una regla de limpiado para que no se produzcan alertas en caso de cambiar muy rápido dentro de la aplicación de una página a otra.
+
+
+
 # RehabTime - Hito 1
 Para la realización de este Hito 1, es importante entender:
 - Qué es el concepto de proyecto y cómo se organiza.
@@ -208,4 +268,5 @@ Para configurar correctamente el MFA en GitHub, nos vamos a las Herramientas en 
 - Introducimos el prefijo y el móvil: +34 6XX XXX XX0.
 - Introducimos la clave enviada por SMS en la web.
 - Aceptamos y comprobamos que nuestro móvil está como método alternativo de recuperación.
-![17](https://user-images.githubusercontent.com/91733073/178247301-11c638d2-239f-44ec-8872-7ad3aba2c004.png)
+![17](https://user-images.githubusercontent.com/91733073/185757573-d13d29e8-f60a-46bf-95b0-45963f1f231c.png)
+

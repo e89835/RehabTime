@@ -11,6 +11,8 @@ Bienvenido a la página principal del proyecto RehabTime, dentro de CC en la con
 
 - Los enlaces a las Historias de Usuario están en la carpeta [doc](https://github.com/e89835/RehabTime/blob/main/doc/): [HU1](https://github.com/e89835/RehabTime/blob/main/doc/US1.md), [HU2](https://github.com/e89835/RehabTime/blob/main/doc/US2.md), [HU3](https://github.com/e89835/RehabTime/blob/main/doc/US3.md), [HU4](https://github.com/e89835/RehabTime/blob/main/doc/US4.md) y [HU5](https://github.com/e89835/RehabTime/blob/main/doc/US5.md).
 
+- Para el testeo de la aplicación, se ha usado el gestor de tareas **NPM** y el marco de pruebas **Jest** y **RTL**. La justificación más detallada se encuentra en la [documentación del H2](https://github.com/e89835/RehabTime/blob/main/doc/Documentation.md#rehabtime---hito-2).
+
 - En el siguiente enlace se encuentra el [MVP](https://github.com/e89835/RehabTime/blob/main/doc/MVP.md).
 
 - En este enlace se encuentran los [objetivos de los Hitos](https://github.com/e89835/RehabTime/blob/main/doc/Objectives.md) alcanzados. 

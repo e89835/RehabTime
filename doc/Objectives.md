@@ -1,7 +1,6 @@
 # Objetivos
 
 ## RehabTime - Hito 0
-
 - [X] Descargar git.
 - [X] Crear par de claves y agregarla usando la [documentacion oficial](https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key). 
 - [X] Agregar la clave SSH a la cuenta github usando la [documentacion oficial](https://docs.github.com/es/github/authenticating-to-github/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account).
@@ -21,3 +20,10 @@
 - [X] Elegir y usar la biblioteca de aserciones.
 - [X] Elegir y usar el marco de pruebas.
 - [X] Avanzar en el código, tests incluídos e HU, con uso correcto de milestones.
+
+
+## RehabTime - Hito 3
+- [X] Elegir y justificar el contenedor base.
+- [X] Dockerfile correcto, con buenas prácticas, adaptado y optimizado.
+- [X] Subir contenedor a Docker Hub y documentarlo.
+- [X] Uso de registros alternativos y públicos.

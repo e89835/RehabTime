@@ -2,6 +2,9 @@
 En este apartado está una documentación extendida de la realización de cada uno de los hitos.
 
 
+# Rehabtime - Hito 4
+TO_DO /*.*/
+
 # RehabTime - Hito 3
 Primero, comenzamos eligiendo [Node Apline](https://hub.docker.com/_/node) ejecutado en [Docker](https://docs.docker.com/get-started/overview/) como contenedor base.
 - Elegimos **Docker** por ser un PaaS abierto, por su facilidad de uso y por su amplia utilización en la actualidad. Docker permite el despliegue de aplicaciones dentro de contenedores, proporcionando una capa adicional de abstración y automatización. Docker usa características Linux, permitiendo que varios contenedores se lancen dentro de una única instancia. Además, el kernel de Linux aisla la vista que tiene una aplicación de su entorno operativo, además de proporcionar aislamiento de recursos. Por último, la compatibilidad es muy elevada, pudiendo ejecutarse en local, nubes públicas, privadas y/o mixtas. Podemos ver más información en la [documentación oficial](https://docs.docker.com/) y en [Wikipedia](https://en.wikipedia.org/wiki/Docker_(software)).

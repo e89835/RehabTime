@@ -26,3 +26,4 @@ Bienvenid@ a la página principal del proyecto RehabTime, dentro de CC en la con
 - En este enlace se encuentran los [objetivos de los Hitos](https://github.com/e89835/RehabTime/blob/main/doc/Objectives.md) alcanzados. 
 
 - En este enlace se encuentra la [licencia](https://github.com/e89835/RehabTime/blob/main/LICENSE).
+

@@ -16,9 +16,9 @@ Bienvenid@ a la página principal del proyecto RehabTime, dentro de CC en la con
 
 - Para el testeo de la aplicación, se ha usado el gestor de tareas **NPM** y el marco de pruebas **Jest** y **RTL**. La justificación más detallada se encuentra en la [documentación del H2](https://github.com/e89835/RehabTime/blob/main/doc/Documentation.md#rehabtime---hito-2).
 
-- Para los contenedores, se usa la distribución [Alpine](https://hub.docker.com/_/alpine) Node 10 en contenedor [Docker](https://docs.docker.com/get-started/overview/). La imagen resultante se sube a [Docker Hub](https://hub.docker.com/) y a GitHub Container Registry ([GHCR](https://github.com/features/packages)). Para más detalle ver [aquí](https://github.com/e89835/RehabTime/blob/main/doc/Documentation.md#rehabtime---hito-3).
+- Para los contenedores, se usa la distribución [Alpine](https://hub.docker.com/_/alpine) Node 10 en contenedor [Docker](https://docs.docker.com/get-started/overview/). La imagen resultante se sube a [Docker Hub](https://hub.docker.com/) y a GitHub Container Registry ([GHCR](https://github.com/features/packages)). Para más detalle ver la [documentación del H3](https://github.com/e89835/RehabTime/blob/main/doc/Documentation.md#rehabtime---hito-3).
 
-- Para la Integración Contínua, se usa [Travis CI](https://app.travis-ci.com/github/e89835/RehabTime) y [Circle CI](https://app.circleci.com/pipelines/github/e89835/RehabTime). También se usa [Docker + Travis CI](https://github.com/e89835/RehabTime/blob/main/doc/Documentation.md#docker--travis-ci) Para más detalle ver [aquí](https://github.com/e89835/RehabTime/blob/main/doc/Documentation.md#rehabtime---hito-4).
+- Para la Integración Continua, se usa [Travis CI](https://app.travis-ci.com/github/e89835/RehabTime) y [Circle CI](https://app.circleci.com/pipelines/github/e89835/RehabTime). También se usa [Docker + Travis CI](https://github.com/e89835/RehabTime/blob/main/doc/Documentation.md#docker--travis-ci). Para más detalle ver la [documentación del H4](https://github.com/e89835/RehabTime/blob/main/doc/Documentation.md#rehabtime---hito-4).
 
 - En el siguiente enlace se encuentra el [MVP](https://github.com/e89835/RehabTime/blob/main/doc/MVP.md).
 

@@ -3,7 +3,115 @@ En este apartado está una documentación extendida de la realización de cada u
 
 
 # Rehabtime - Hito 4
-TO_DO /*.*/
+## Travis CI
+Para la integración continua (CI, por sus siglas en inglés, _Continuous Integration_) elegimos [Travis CI](https://www.travis-ci.com/). Travis CI es una plataforma de integración continua alojada que es gratuita para todos los proyectos de código abierto alojados en GitHub. Haciendo uso de un único archivo `.travis.yml` que contiene la información de nuestro proyecto, podemos ejecutar compilaciones automáticas con cada cambio en nuestra base de código. Se puede consultar más información en la [documentación oficial](https://docs.travis-ci.com/).
+
+Para poder usar Travis CI, el primer paso es ir a la web y acceder con nuestra cuenta de GitHub:
+
+![image](https://user-images.githubusercontent.com/91733073/186729317-a25728bb-5b2b-4e93-a4de-cb6b0c71320c.png)
+
+Ahora hay que darle permisos para que pueda sincronizarse con GitHub:
+
+![image](https://user-images.githubusercontent.com/91733073/186729466-9699404e-0192-47fa-9865-2f8cf1185622.png)
+
+Y comprobamos que los permisos están dados y la aplicación se encuentra en GitHub:
+
+![image](https://user-images.githubusercontent.com/91733073/186729658-9fe39efd-d3da-4065-a378-9c2fd93a621d.png)
+
+A continuación, el primer paso es configurar el repositorio que queremos integrar, así como elegir el plan:
+
+![image](https://user-images.githubusercontent.com/91733073/186729751-fa5b8754-590e-47c8-89a3-e1fec2130340.png)
+
+Le damos permiso a todos los repositorios:
+
+![image](https://user-images.githubusercontent.com/91733073/186729810-9befa4c6-f40d-4c7d-9f89-6a00c6a28a48.png)
+
+Y seleccionamos nuestro repositorio:
+
+![image](https://user-images.githubusercontent.com/91733073/186729869-bbe0d4ec-a15e-4023-b3c5-2ab5cfc13e34.png)
+
+Seguidamente, hacemos nuestro fichero `.travis.yml` en GitHub:
+
+![image](https://user-images.githubusercontent.com/91733073/186730021-7c84d848-9d03-4412-93e2-53de7a14a2ee.png)
+
+A continuación seleccionemos el plan y ponemos nuestra tarjeta de crédito (sino, no funciona la integración):
+
+![image](https://user-images.githubusercontent.com/91733073/186730242-b5e1686d-39ca-491a-8a87-a42898158b49.png)
+
+Esto se debe a que desde noviembre de 2020, Travis CI tiene un nuevo sistema de pago, y tenemos que tener una tarjeta de crédito válida para integrar tareas.
+Además, hay que tener activada la opción: _Consume paid credits for OSS_. Una vez configurado, vamos a Travis y vemos que se está ejecutando:
+
+![image](https://user-images.githubusercontent.com/91733073/186730397-752b1545-6d06-4159-bdaa-7e4bef684fc8.png)
+
+Y esperamos a que termine:
+
+![image](https://user-images.githubusercontent.com/91733073/186730493-7205a6a6-39e7-4d59-8f59-3abc80c6f8a9.png)
+
+Después, actualizamos el readme y añadimos la medalla de Travis en el README:
+
+![image](https://user-images.githubusercontent.com/91733073/186730633-61b98509-a072-4b97-a822-b278c4894888.png)
+
+Travis CI se lanzará con cada _commit_ que hagamos, pero podemos cambiar esto en la configuración de Travis CI:
+
+![image](https://user-images.githubusercontent.com/91733073/186730722-6a88cc54-a361-4254-8594-99fa903d2c1a.png)
+
+
+## Circle CI
+Como sistema adicional de CI, elegimos [Circle CI](https://circleci.com/). Circle CI es una plataforma de integración continua y entrega continua. Circle CI es una de las plataformas más utilizadas, ejecutando casi un millón de trabajos al día en unas treinta mil organizaciones. Una de sus ventajas es que los trabajos se ejecutan rápidamente y las compilaciones se pueden optimizar. Para más información, se puede consultar la [documentación oficial](https://circleci.com/docs) y [_about_](https://circleci.com/docs/about-circleci).
+
+Para comenzar el uso de Circle CI, primero nos vamos a la web donde accedemos con nuestra cuenta de GitHub:
+
+![image](https://user-images.githubusercontent.com/91733073/186732737-95aaf641-df42-4be8-84ef-1a7e8d8a9f43.png)
+
+Autorizamos y damos permiso a Circle CI en GitHub:
+
+![image](https://user-images.githubusercontent.com/91733073/186732844-c4b029f7-1ce2-4348-b9a7-20a984c508d2.png)
+
+Y seleccionamos nuestro usuario y repositorio. Además, creamos inicialmente el fichero `.circleci/config.yml`:
+
+![image](https://user-images.githubusercontent.com/91733073/186733039-92f4ef48-e263-4f4c-b232-47ca5facbd19.png)
+
+El fichero de configuración queda así:
+
+![image](https://user-images.githubusercontent.com/91733073/186733161-3babc91c-51ea-4174-bcab-1680e72ef01a.png)
+
+A continuación, nos mandan un correo con el aviso de haber añadido una nueva clave pública y se lanza el trabajo en Circle CI:
+
+![image](https://user-images.githubusercontent.com/91733073/186733341-144084f4-0612-4e7e-a66c-7ffc0e9581d5.png)
+
+Una vez terminado, vemos la medalla en verde y podemos ver los detalles de ejecución:
+
+![image](https://user-images.githubusercontent.com/91733073/186733448-93c99cb1-a275-4641-ada6-b95ff5686513.png)
+
+Por último, añadimos nuestra medalla de Circle CI en nuestro `Readme.md`:
+
+![image](https://user-images.githubusercontent.com/91733073/186733538-1a1f7ddb-0bbd-4d4a-b831-d3b98db86a4b.png)
+
+## Buenas prácticas
+Como buenas prácticas dentro de este Hito 4, se mencionan las siguientes:
+- Sólo se ejecuta el test en el fichero Travis CI.
+- Circle CI se lanza siempre con cada commit.
+- Uso de _checkout_ en Circle CI, como paso especial para verificar el código fuente configurado ([más info](https://circleci.com/docs/configuration-reference#checkout)).
+- En Travis CI usamos cache de contenido para acelerar la construccion del proceso:
+  - Esto se consigue activando en ON las opciones _Build pushed branches_ & _Build pushed pull request_.
+
+![image](https://user-images.githubusercontent.com/91733073/186736086-4dc5760b-9864-4b54-8c27-2eb562d46025.png)
+
+## Docker + Travis CI
+Por último se pide usar el contenedor Docker del Hito 3 con CI. Para incluir CI en nuestra imagen docker, nos vamos al fichero Travis CI y lo modificamos como queda:
+
+![image](https://user-images.githubusercontent.com/91733073/186737392-1fc91086-f986-4491-b7c9-6be56528a080.png)
+
+Ahora, nos vamos a Travis CI y vemos que los tests se han ejecutado correctamente:
+
+![image](https://user-images.githubusercontent.com/91733073/186737485-b433ea53-5785-4784-94fe-416ccf0ed62a.png)
+
+De esta forma podremos ejecutar los test automáticamente de Travis en Docker al hacer Commit.
+Como comentario importante, el contenedor no se para, así que hay que finalizarlo manualmente, por esto se han usado dos ficheros Travis.
+
+
+
+
 
 # RehabTime - Hito 3
 Primero, comenzamos eligiendo [Node Apline](https://hub.docker.com/_/node) ejecutado en [Docker](https://docs.docker.com/get-started/overview/) como contenedor base.

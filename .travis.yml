@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+  - 16.3
+before-install:
+  - npm install -g codecov
+cache:
+  directories:
+    - node_modules
+script:
+  - npm test
+after_success:
+  - codecov

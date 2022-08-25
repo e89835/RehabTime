@@ -8,12 +8,11 @@ before-install:
   - docker pull e89835/rehabtime
 before-script:
   - docker run -d -p 127.0.0.1:80:3000 e89835/rehabtime /bin/sh -c "npm run start"
-  - docker ps -a
-  - docker run e89835/rehabtime /bin/sh -c "npm test"
 #cache:
 #  directories:
 #    - node_modules
 script:
-  - npm test
+  - docker ps -a
+  - docker run e89835/rehabtime /bin/sh -c "npm test"
 after_success:
   - docker-compose down

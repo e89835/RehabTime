@@ -6,15 +6,11 @@ services:
 cache:
   directories:
     - node_modules
-before-install:
-  - npm install -g codecov
-  - docker pull e89835/rehabtime
-before-script:
-  - docker run -d -p 127.0.0.1:80:3000 e89835/rehabtime
 script:
+  - docker run -d -p 127.0.0.1:80:3000 e89835/rehabtime
   - docker ps -a
-  - docker run e89835/rehabtime /bin/sh -c "npm run test"
-  - docker run e89835/rehabtime /bin/sh -c "q"
+  - docker run e89835/rehabtime /bin/sh -c "npm ci"
+  - docker run e89835/rehabtime /bin/sh -c "npm test"
   - docker run e89835/rehabtime /bin/sh -c "exit"
 after_success:
   - docker-compose down

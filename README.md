@@ -1,8 +1,7 @@
-[![Build Status](https://app.travis-ci.com/e89835/RehabTime.svg?branch=main)](https://app.travis-ci.com/e89835/RehabTime)
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/e89835/RehabTime/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/e89835/RehabTime/tree/main)
 
 
-# RehabTime
+
+# RehabTime [![Build Status](https://app.travis-ci.com/e89835/RehabTime.svg?branch=main)](https://app.travis-ci.com/e89835/RehabTime) [![CircleCI](https://dl.circleci.com/status-badge/img/gh/e89835/RehabTime/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/e89835/RehabTime/tree/main)
 Bienvenid@ a la página principal del proyecto RehabTime, dentro de CC en la convocatoria extraordinaria 2122.
 
 # Enlaces
@@ -19,7 +18,7 @@ Bienvenid@ a la página principal del proyecto RehabTime, dentro de CC en la con
 
 - Para los contenedores, se usa la distribución [Alpine](https://hub.docker.com/_/alpine) Node 10 en contenedor [Docker](https://docs.docker.com/get-started/overview/). La imagen resultante se sube a [Docker Hub](https://hub.docker.com/) y a GitHub Container Registry ([GHCR](https://github.com/features/packages)). Para más detalle ver [aquí](https://github.com/e89835/RehabTime/blob/main/doc/Documentation.md#rehabtime---hito-3).
 
-- Para la Integración Contínua, se usa [Travis CI](https://app.travis-ci.com/github/e89835/RehabTime) y [Circle CI](https://app.circleci.com/pipelines/github/e89835/RehabTime). Para más detalle ver [aquí](https://github.com/e89835/RehabTime/blob/main/doc/Documentation.md#rehabtime---hito-4).
+- Para la Integración Contínua, se usa [Travis CI](https://app.travis-ci.com/github/e89835/RehabTime) y [Circle CI](https://app.circleci.com/pipelines/github/e89835/RehabTime). También se usa [Docker + Travis CI](https://github.com/e89835/RehabTime/blob/main/doc/Documentation.md#docker--travis-ci) Para más detalle ver [aquí](https://github.com/e89835/RehabTime/blob/main/doc/Documentation.md#rehabtime---hito-4).
 
 - En el siguiente enlace se encuentra el [MVP](https://github.com/e89835/RehabTime/blob/main/doc/MVP.md).
 

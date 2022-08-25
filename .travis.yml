@@ -13,8 +13,7 @@ before-script:
   - docker run -d -p 127.0.0.1:80:3000 e89835/rehabtime /bin/sh -c "npm run start"
 script:
   - docker ps -a
+  - docker stop -t 15
   - docker run e89835/rehabtime /bin/sh -c "npm test"
-  - docker run e89835/rehabtime /bin/sh -c "q"
-  - docker run e89835/rehabtime /bin/sh -c "exit"
 #after_success:
 #  - docker-compose down

@@ -14,5 +14,5 @@ before-install:
 #    - node_modules
 script:
   - npm test
-after_success:
-  - codecov
+#after_success:
+#  - codecov

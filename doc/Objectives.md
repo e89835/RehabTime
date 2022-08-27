@@ -27,3 +27,10 @@
 - [X] Dockerfile correcto, con buenas prácticas, adaptado y optimizado.
 - [X] Subir contenedor a Docker Hub y documentarlo.
 - [X] Uso de registros alternativos y públicos.
+
+
+## RehabTime - Hito 4
+- [X] Integración Continua funcionando: Travis CI.
+- [X] Integración Continua adicional: Circle CI.
+- [X] Uso correcto del gestor de tareas y buenas prácticas.
+- [X] Usar el contenedor Docker del H3 con un sistema CI.

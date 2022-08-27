@@ -94,6 +94,7 @@ Como buenas prácticas dentro de este Hito 4, se mencionan las siguientes:
 - Uso de _checkout_ en Circle CI, como paso especial para verificar el código fuente configurado ([más info](https://circleci.com/docs/configuration-reference#checkout)).
 - En Travis CI usamos cache de contenido para acelerar la construccion del proceso:
   - Esto se consigue activando en ON las opciones _Build pushed branches_ & _Build pushed pull request_.
+- En Travis CI, lanzar los test de forma única y no con el _watcher_.
 
 ![image](https://user-images.githubusercontent.com/91733073/186736086-4dc5760b-9864-4b54-8c27-2eb562d46025.png)
 
@@ -107,7 +108,20 @@ Ahora, nos vamos a Travis CI y vemos que los tests se han ejecutado correctament
 ![image](https://user-images.githubusercontent.com/91733073/186737485-b433ea53-5785-4784-94fe-416ccf0ed62a.png)
 
 De esta forma podremos ejecutar los test automáticamente de Travis en Docker al hacer Commit.
-Como comentario importante, el contenedor no se para, así que hay que finalizarlo manualmente, por esto se han usado dos ficheros Travis.
+Como comentario importante, el contenedor no se para, dado que se lanza en modo _watcher_.
+
+Para lanzar el contenedor de test con una única ejecución, cambiamos el script añadiendo `CI=true`. Al añadir este comando se fuerza el Test a ejecutarse en modo CI, ejecutándose sólo una vez en lugar de lanzar el _watcher_. El comando quedaría:
+
+`docker run -d -p 127.0.0.1:80:3000 -e CI=true e89835/rehabtime npm run test`
+
+Y el fichero `.travis.yml` quedaría:
+
+![image](https://user-images.githubusercontent.com/91733073/187028037-0f26ec16-9bb9-4ca9-9d2b-107320093764.png)
+
+De esta manera, una vez lanzado el test, se termina la ejecución como muestra la siguiente imagen:
+
+![image](https://user-images.githubusercontent.com/91733073/187028180-7570d537-b97d-4b4e-b07b-234dd26c9838.png)
+
 
 
 

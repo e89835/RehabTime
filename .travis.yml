@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - 16.3
+services:
+  - docker
+cache:
+  directories:
+    - node_modules
+script:
+  - docker run -d -p 127.0.0.1:80:3000 -e CI=true e89835/rehabtime npm run test
+  

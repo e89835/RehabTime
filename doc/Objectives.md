@@ -34,3 +34,12 @@
 - [X] Integración Continua adicional: Circle CI.
 - [X] Uso correcto del gestor de tareas y buenas prácticas.
 - [X] Usar el contenedor Docker del H3 con un sistema CI.
+
+
+## RehabTime - Hito 5
+- [X] Justificación del framework.
+- [X] Diseño API y documentación.
+- [X] Buenas prácticas: CD.
+- [X] Uso de logs y justificación de la herramienta.
+- [X] Test correctos con HU.
+

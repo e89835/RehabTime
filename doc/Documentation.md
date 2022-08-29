@@ -1,6 +1,196 @@
 # Documentation
 En este apartado está una documentación extendida de la realización de cada uno de los hitos.
 
+# Rehabtime - Hito 5
+## React
+Según la encuesta de [desarrolladores de StackOverflow de 2021](https://insights.stackoverflow.com/survey/2021), [React](https://insights.stackoverflow.com/survey/2021#section-most-popular-technologies-web-frameworks) se encuentra como ganador en la categoría de frameworks web, con más de un 40% de votos.
+
+![image](https://user-images.githubusercontent.com/91733073/187188531-ed673725-8752-4c68-b783-b20acd8b9720.png)
+
+
+En la misma [encuesta](https://insights.stackoverflow.com/survey/2021#most-loved-dreaded-and-wanted-webframe-love-dread), se posicionó en 4 posición como el framework más querido, con casi un 70% de votos positivos, y algo más de un 25% de votos sobre el total recibidos. 
+ 
+![image](https://user-images.githubusercontent.com/91733073/187188617-2c6fb206-7be7-4fa6-9ac0-49c789c6cb28.png)
+
+ 
+ [React](https://en.reactjs.org/) es una bilbioteca de JavaScript que permite desarrollar una interfaz de usuario de reacción superior para aplicaciones web y móviles. Se integra convenientemente con otras bibliotecas y marcos JavaScript, incluidos pequeños fragmentos de código reutilizables denominados componentes. Las bibliotecas de componentes de React no sólo optimizan el proceso de desarrollo de la interfaz de usuario, sino que también brindan una flexibilidad extrema debido a su alta modularidad.
+
+Debido a la popularidad de REACT (175k estrellas en GitHub), los desarrolladores tienen casi infinitas bilbiotecas de interfaz de usuario de React.
+
+![image](https://user-images.githubusercontent.com/91733073/187187976-a7e9983d-55cc-4301-9756-ee55744661ee.png)
+
+Se han contemplado otras opciones como VUE JS o NextJS. El primero se descarta por la aplastante ventaja de REACT en las citadas encuestas de StackOverflow (doblando en popularidad 	React a VUE) y el segundo porque, aunque NextJS ofrece varias herramientas para minimizar el proceso de desarrollo, React tiene mejores recursos para el desarrollo front-end.
+
+Para ver la creación de la aplicación en detalle, visite el siguiente [enlace](https://github.com/e89835/RehabTime/blob/main/doc/Documentation.md#rehabtime---creaci%C3%B3n-aplicaci%C3%B3n).
+
+
+## API REST
+API significa Application Programming Interface (Interfaz de Programación de Aplicaciones), y es un medio que permite que diferentes aplicaciones se comuniquen entre sí, dando respuestas en tiempo real.
+
+Roy Fielding definió REST en los 2000 como un estilo arquitectónico y una metodología comúnmente utilizados en el desarrollo de servicios de internet. REST significa Representatiol State Transfer (Transferencia de estado representacional)
+	
+Cuando se realiza una solicitud a través de una API REST, se envía una representación del estado actual del recurso al punto final. Esta representación puede ser en formato JSON (notación de objetos JavaScript), XML o HTML. Se elige JSON por ser el formato más utilizado, por ser independiente del idioma y por resultar fácil de leer por humanos.
+	
+Se pueden construir API REST de varias maneras, pero nosotros elegimos FETCH API que es un navegador integrado. Para ello, necesitaremos dos React Hook principales:
+	
+- [UseEffect Hook](https://reactjs.org/docs/hooks-effect.html): en React, realizamos solicitudes de API dentro del gancho `useEffect()`. Se procesa inmediatamente cuando se monta la aplicación o después de alcanzar un estado específico. La sintaxis es:
+```
+useEffect(() => {
+    // your-data-fetching-goes-here
+}, []);
+```
+	
+- [UseState Hook](https://reactjs.org/docs/hooks-state.html): cuando solicitamos datos, debemos preparar un estado en el que se vayan a almacenar los datos cuando se devuelvan. Podemos guardarlo en una herramienta de gestión de estado como REDUX o en un objeto de contexto. O para simplificar las cosas, almacenamos los datos devueltos en el estado local de REACT.
+```
+const [posts, setPosts] = useState([]);
+```
+
+## API FETCH
+Fetch API es un método integrado de JavaScript para recuperar recursos de un servidor o un punto final de API. Está integrado, por lo que no necesita instalar dependencias ni paquetes de terceros.
+El método `fetch()` requiere un argumento obligatorio, que es la ruta o URL del recurso que desea obtener. Luego devuelve una _promesa_ para que pueda manejar el éxito o el fracaso utilizando los métodos then() y catch()
+Un ejemplo básico sería:
+```
+fetch('https://your-url-goes-here.es/id=11')
+   .then(response => response.json())
+   .then(data => console.log(data));
+``` 
+Ahora creamos un estado en el código para almacenar los datos que recuperamos de la API, para poder usarlos luego en nuestra aplicación. Además, establecemos el valor predeterminado:
+
+`const [data, setData] = useState(null);`
+	
+La mayor operación _then_ ocurre en el estado _useState_, cargando los datos al iniciar la aplicación. La operación _fetch_ tiene una promesa, que podemos aceptar o rechazar:
+```
+useEffect(() => {
+  fetch('https://your-url-goes-here.es/id=11')
+     .then((response) => console.log(response) );
+}, []);
+```
+Sin embargo, cuando se devuelve un objeto respuesta, necesitamos convertirlo a JSON usando el método `json()`:
+```
+useEffect(() => {
+               fetch(url, { signal: abortContr.signal })
+                .then(res => {
+                    console.log(res);
+                    return res.json();
+                }) .then(data => {
+                    console.log(data);
+                    setData(data);
+               });
+}, []);
+```
+Hasta ahora, hemos incluido la respuesta aceptada pero no la rechazada. La rechazada quedaría añadiendo:
+```
+useEffect(() => {
+  fetch(url, { signal: abortContr.signal })
+    .then(res => {
+       console.log(res);
+       return res.json();
+    }) .then(data => {
+         console.log(data);
+         setData(data);
+  }) .catch(err => {
+    console.log('fetch aborted');
+  });
+}, []);
+```
+Hasta aquí habríamos hecho una petición **GET**.
+
+### POST
+El método POST añade datos desde un _endpoint_. Para ello, una vez se ha recibido un evento (clic con el ratón), usamos _preventDefault_ para evitar que se recargue-refresque el navegador. Después, nos creamos una entrada  _blog_ con los campos necesarios. Ponemos un flag _setIsPending_ a true hasta que termine la operación. 
+
+Cogemos los datos con la API usando `fetch`, y ponemos el método POST con la nueva entrada _blog_ convertida a JSON. Una vez añadido lo mostramos por log y ponemos el flag _setIsPending_  a false. Por último, vamos a HOME ('/'). Quedaría así para añadir una entrada:
+```
+const handleSubmit = (e) => {
+  e.preventDefault();
+  const blog = {title, body, author, likes, image, comments};
+
+  //console.log(blog);
+  setIsPending(true);
+  fetch('http://localhost:8000/blogs/', {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body : JSON.stringify(blog)
+  }).then(() => {
+    console.log('new blog added');
+    setIsPending(false);
+  });
+	
+  history.push('/');
+}
+```
+
+### DELETE
+El método DELETE elimina datos desde un _endpoint_. Para ello, una vez se ha recibido un evento, usamos `fetch` con la URL y el identificador a eliminar. Una vez eliminado, nos vamos a HOME ('/'): Quedaría así para eliminar una entrada:
+```
+const handleClickDelete= () => {
+  fetch('http://localhost:8000/blogs/' + blog.id, {
+    method: 'DELETE'
+    }).then(() =>{
+       history.push('/')
+    })
+}
+```
+El uso de la API está alineada con las Historias de Usuario: [HU1](https://github.com/e89835/RehabTime/blob/main/doc/US1.md), [HU2](https://github.com/e89835/RehabTime/blob/main/doc/US2.md), [HU4](https://github.com/e89835/RehabTime/blob/main/doc/US4.md) y [HU5](https://github.com/e89835/RehabTime/blob/main/doc/US5.md).
+
+## Buenas prácticas
+- Como buenas prácticas se usa una configuración distribuida, separando el funcionamiento de la parte front-end y back-end.
+- En caso de no poder entablar comunicación, saldrá un mensaje de error: _Failed to fetch_.
+- La base de datos se hace en formato JSON, por ser el de mayor uso.
+- Los métodos PUT y DELETE dentro del uso de la API REST están limitados a una única clase de creación _Create.js_ y una única clase de actualización de los detalles del blog _BlogDetails.js_ (me gusta, comentarios, etc.).
+- Los métodos GET de la API REST se usan en dos clases: _Home.js_ y _App.js_. Esto se hace así para "engañar" a react antes de renderizar la aplicación.
+
+
+## Logs
+Para los logs en REACT, usamos la herramienta [console.log](https://www.npmjs.com/package/react-console-log). Se elige esta herramienta por su amplio uso, por estar incluida en los paquetes instalados por defecto, y por su facilidad de uso.
+
+Para instalarla, usamos el comando `npm i react-console-log`. Una vez instalada, podemos usar cuatro tipos log:
+- Log normal.
+- Log de información.
+- Log de atención.
+- Log de error.
+
+Ahora añadimos en App.js los cuatro tipos de log:
+
+![image](https://user-images.githubusercontent.com/91733073/187191500-806b82d0-89c2-4410-8919-8a993478b895.png)
+
+Y lo ejecutamos para ver las diferencias:
+
+![image](https://user-images.githubusercontent.com/91733073/187191528-ba15338e-da0c-4a7a-90ab-a57af483f533.png)
+
+![image](https://user-images.githubusercontent.com/91733073/187191542-0ced1854-0744-4805-8508-a17163e26d98.png)
+
+Vemos que el tipo log y el tipo info muestran por pantalla el mensaje que hayamos puesto, mientras que el warning y error dan más información:
+
+![image](https://user-images.githubusercontent.com/91733073/187191611-67d9bbc0-7cb2-4528-820d-e9bf025df6c0.png)
+
+El uso de logs está incluido en la aplicación donde se ha considerado mayor relevancia. Para más información sobre console.log, se puede mirar la [documentación oficial](https://www.npmjs.com/package/react-console-log).
+
+## Logs - Ampliación:
+Como ampliación a los logs, se han creado los ficheros `Environment.ts`, `Logger.ts` y `react-app-env.d.ts`. 
+
+Esto se hace para poder incluir en la aplicación logs de tres tipos:
+- Log.
+- Warning.
+- Error.
+
+Y que según el tipo de aplicación que desarrollemos y el flag que pasemos en la construcción de la aplicación, _devel_ o _prod_, se incluyan automáticamente todos los logs o sólo warning y error.
+
+Los ficheros se pueden explorar aquí: [`Environment.ts`](https://github.com/e89835/RehabTime/blob/main/src/Environment.ts), [`Logger.ts`](https://github.com/e89835/RehabTime/blob/main/src/Logger.ts) y [`react-app-env.d.ts`](https://github.com/e89835/RehabTime/blob/main/src/react-app-env.d.ts). 
+
+
+## Test
+Los test en este Hito no han sufrido modificaciones, estando alineados con las Historias de Usuario.
+
+La siguiente imagen muestra su ejemplo de ejecución:
+
+![image](https://user-images.githubusercontent.com/91733073/187192858-07f1582c-30a1-45df-bc69-dd695eeecb6a.png)
+
+
+
+
+
+
+
 
 # Rehabtime - Hito 4
 ## Travis CI

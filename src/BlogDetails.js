@@ -10,6 +10,8 @@ const BlogDetails = () => {
     const {data: blog, error, isPending} = useFetch('http://localhost:8000/blogs/' + id);
     const history = useHistory();
     const [comment, setComment] = useState('');
+    const [dificultad, setDificultad] = useState('muy baja');
+
 
     const handleClickLike= (e) =>{
         e.preventDefault();
@@ -21,7 +23,7 @@ const BlogDetails = () => {
             headers: {"Content-Type": "application/json"},
             body : JSON.stringify(blog)
         }).then(() => {
-            console.log('like updated');
+            console.log('Blog ID '+ blog.id + ': like updated');
         });
         history.push(0)
     }
@@ -35,8 +37,9 @@ const BlogDetails = () => {
     const handleClickComments= (e) => {
         e.preventDefault();
         let comm= blog.comments;
-        comm.push(comment);
-        console.log(comm);
+        var date= new Date().toLocaleString();
+        comm.push(date + ' - ' +'Dificultad: '+ dificultad + '. ' + comment);
+        console.log('/*.*/' + comm);
 
         fetch('http://localhost:8000/blogs/' + blog.id, {
             method: "PUT",
@@ -48,7 +51,7 @@ const BlogDetails = () => {
         history.push(0)
     }
 
-
+    console.log('Blog details');
     return ( 
         <div className="blog-details">
             { isPending && <div>Loading...</div> }
@@ -56,7 +59,7 @@ const BlogDetails = () => {
             { blog && (
                 <article>
                     <h2>{ blog.title }</h2>
-                    <p>Publicado por { blog.author } </p>
+                    <p>Ejercicio de {blog.part} con dificultad {blog.difficulty} de {blog.type}. Publicado por { blog.author } </p>
                     
                     <img src={Images.find(id => id.title === blog.image).src} className="App-logo" alt="logo"/>
 
@@ -73,9 +76,21 @@ const BlogDetails = () => {
                     
                     <form onSubmit={handleClickComments}>  
                         <textarea
+                        required
                         value={comment}
                         onChange={(e) => setComment(e.target.value)}
                         ></textarea>
+                        <label>Dificultad: </label>
+                        <select
+                            value={dificultad}
+                            onChange={(ev) => setDificultad(ev.target.value)}>
+                            <option value="muy baja">Muy baja</option>
+                            <option value="baja">Baja</option>
+                            <option value="media">Media</option>
+                            <option value="alta">Alta</option>
+                            <option value="muy alta">Muy alta</option>
+
+                        </select>
                         <button>Añadir comentario</button>
                     </form>  
 

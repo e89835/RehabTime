@@ -6,6 +6,9 @@ const Create = () => {
     const [body, setBody] = useState('');
     const [author, setAuthor] = useState('juanjo');
     const [image, setImage] = useState('idefault');
+    const [difficulty, setDifficulty] = useState('fácil');
+    const [part, setPart] = useState('brazo');
+    const [type, setType] = useState('rehabilitacion');
     const comments = [];
     const [likes] = useState(0);
     const [isPending, setIsPending] = useState(false);
@@ -13,7 +16,7 @@ const Create = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const blog = {title, body, author, likes, image, comments};
+        const blog = {title, body, author, likes, image, difficulty, part, type, comments};
 
         //console.log(blog);
         setIsPending(true);
@@ -29,6 +32,7 @@ const Create = () => {
         history.push('/');
     }
 
+    console.log('Create blog');
     return ( 
         <div className="create">
             <h2>Añadir entrada</h2>
@@ -48,7 +52,7 @@ const Create = () => {
                 <label>Autor: </label>
                 <select
                     value={author}
-                    onChange={(e) => setAuthor(e.target.value)}>
+                    onChange={(ea) => setAuthor(ea.target.value)}>
                     <option value="juanjo">juanjo</option>
                     <option value="jose maria">jose maria</option>
                     <option value="anonimo">anonimo</option>
@@ -56,7 +60,7 @@ const Create = () => {
                 <label>Imagen: </label>
                 <select
                     value={image}
-                    onChange={(e) => setImage(e.target.value)}>
+                    onChange={(ei) => setImage(ei.target.value)}>
                     <option value="ibrazo1">brazo1</option>
                     <option value="ibrazo2">brazo2</option>
                     <option value="icuello">cuello</option>
@@ -70,6 +74,34 @@ const Create = () => {
                     <option value="itobillo2">tobillo2</option>
                     <option value="idefault">defecto</option>
                 </select>
+                <label>Dificultad: </label>
+                <select
+                    value={difficulty}
+                    onChange={(ed) => setDifficulty(ed.target.value)}>
+                    <option value="fácil">Fácil</option>
+                    <option value="moderada">Moderada</option>
+                    <option value="difícil">Difícil</option>
+                </select>
+                <label>Parte: </label>
+                <select
+                    value={part}
+                    onChange={(ep) => setPart(ep.target.value)}>
+                    <option value="brazo">Brazo</option>
+                    <option value="cuello">Cuello</option>
+                    <option value="espalda">Espalda</option>
+                    <option value="muñeca">Muñeca</option>
+                    <option value="pierna">Pierna</option>
+                    <option value="rodilla">Rodilla</option>
+                    <option value="tobillo">Tobillo</option>
+                </select>
+                <label>Tipo: </label>
+                <select
+                    value={type}
+                    onChange={(et) => setType(et.target.value)}>
+                    <option value="rehabilitación">Rehabilitación</option>
+                    <option value="potenciación">Potenciación</option>
+                </select>
+                
                 { !isPending && <button>Añadir</button> }
                 { isPending && <button disabled>Añadiendo...</button> }
 
@@ -77,6 +109,10 @@ const Create = () => {
                 <p>{ body }</p>
                 <p>{ author }</p>
                 <p>{ image }</p>
+                <p>{ difficulty }</p>
+                <p>{ part }</p>
+                <p>{ type }</p>
+
 
             </form>
         </div>

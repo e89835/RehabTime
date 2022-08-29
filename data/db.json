@@ -6,6 +6,9 @@
       "author": "juanjo",
       "likes": 5,
       "image": "icuello",
+      "difficulty": "Fácil",
+      "part": "Cuello",
+      "type": "Rehabilitación",
       "comments": [
         "Comentario 1 test",
         "Comentario 2 test 2"
@@ -16,10 +19,46 @@
       "title": "Ejercicio rodilla",
       "body": "Pasos laterales. Coloca una cinta elástica atada entre los tobillos. Debe quedar tirante con tus piernas abiertas la anchura de la cadera. Rodillas semiflexionadas. Separa la pierna lateralmente y desplázate hacia un lado y después hacia el otro.",
       "author": "juanjo",
-      "likes": 2,
+      "likes": 4,
       "image": "irodilla",
+      "difficulty": "Moderada",
+      "part": "Rodilla",
+      "type": "Potenciación",
       "comments": [],
       "id": 2
+    },
+    {
+      "title": "qwert",
+      "body": "qwert",
+      "author": "juanjo",
+      "likes": 0,
+      "image": "idefault",
+      "difficulty": "",
+      "part": "cuello",
+      "type": "rehabilitacion",
+      "comments": [
+        "28/8/2022, 20:42:13 - Dificultad: . test",
+        "28/8/2022, 20:42:18 - Dificultad: baja. test",
+        "28/8/2022, 20:42:19 - Dificultad: baja. test",
+        "28/8/2022, 20:42:49 - Dificultad: muy baja. qwer",
+        "28/8/2022, 20:42:55 - Dificultad: alta. as"
+      ],
+      "id": 3
+    },
+    {
+      "title": "ttt",
+      "body": "ttt",
+      "author": "juanjo",
+      "likes": 0,
+      "image": "idefault",
+      "difficulty": "fácil",
+      "part": "brazo",
+      "type": "rehabilitacion",
+      "comments": [
+        "28/8/2022, 20:44:09 - Dificultad: muy baja. ",
+        "28/8/2022, 20:45:24 - Dificultad: muy baja. 12"
+      ],
+      "id": 4
     }
   ]
 }

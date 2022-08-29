@@ -7,35 +7,64 @@ import BlogDetails from './BlogDetails';
 import NotFound from './NotFound';
 import SearchBlog from './Search';
 import Announcer from './Announcer';
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
+
+import { LOG_LVL } from './Environment';
+import { logger } from './Logger';
 
 
 
-const posts = [
+/*const posts = [
   { id: '1', name: 'Este es un ejemplo de cadena usando React' },
   { id: '2', name: 'Se escribe React y no Preact' },
   { id: '3', name: 'Tercer ejemplo de cadena' },
   { id: '4', name: 'Cuarta y última cadena' },
-];
+]; */
 
-const filterPosts = (posts, query) => {
+const filterBlogs = (blogs, query) => {
   if (!query) {
-      return posts;
+      return blogs;
   }
 
-  return posts.filter((post) => {
-      const postName = post.name.toLowerCase();
-      return postName.includes(query);
+  return blogs.filter((blog) => {
+      const blogName = blog.title.toLowerCase();
+      return blogName.includes(query);
   });
 };
 
 function App() {
 
+  const [blogs, setBlogs] = useState([]);
+    useEffect(() => {
+        const fetchBlog = async () => {
+           const response = await fetch(
+              'http://localhost:8000/blogs/'
+           );
+           const blog = await response.json();
+           console.log(blog);
+           setBlogs(blog);
+        };
+        fetchBlog().catch(err => {console.log(err.message)});
+     }, []);
+
+  //const logger = new ConsoleLogger({ level: LOG_LVL }); 
+  /*
+  console.log('RT - log example');
+  console.info('RT - info example');
+  console.warn('RT - warning example');
+  console.error('RT - error example');
+
+  logger.log('RT - log example');
+  logger.warn('RT - warn example');
+  logger.error('RT - error example');
+  */
+  //LOG_LVL= 'prod';
+  
   const { search } = window.location;
   const query = new URLSearchParams(search).get('s');
   const [searchQuery, setSearchQuery] = useState(query || '');
-  const filteredPosts = filterPosts(posts, searchQuery);
-
+  const filteredBlogs = filterBlogs(blogs, searchQuery);
 
 
   return (
@@ -60,17 +89,19 @@ function App() {
               </Route>
               <Route path="/search">
                 <div className="search">
-                  <Announcer
-                        message={`${filteredPosts.length} filtrados / ${posts.length} totales`}
+                <Announcer
+                        message={`${filteredBlogs.length} filtrados / ${blogs.length} totales`}
                   />
                     <SearchBlog
-
                       searchQuery={searchQuery}
                       setSearchQuery={setSearchQuery}
                     />
                     <ul>
-                        {filteredPosts.map((post) => (
-                            <li key={post.id}>{post.name}</li>
+                                             
+                        {filteredBlogs.map((blog) => (
+                          <Link to={`/blogs/${blog.id}`}>
+                            <h2>{ blog.title }</h2>
+                          </Link>
                         ))}
                     </ul>
                 </div>

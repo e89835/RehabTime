@@ -10,6 +10,7 @@ const NavBar = () => {
     const themeToggler = () => {
         theme === 'Día' ? setTheme('Noche') : setTheme('Día')
     }
+    console.log('Mode ' + theme);
 
     return (
         <ThemeProvider theme={theme === 'Día' ? lightTheme : darkTheme}>

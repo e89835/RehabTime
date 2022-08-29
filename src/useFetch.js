@@ -18,6 +18,7 @@ const useFetch = (url) => {
                     return res.json();
                 })
                 .then(data => {
+                    console.info('Home - Data loaded');
                     console.log(data);
                     setData(data);
                     setIsPending(false);

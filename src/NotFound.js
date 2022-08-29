@@ -3,7 +3,8 @@ import e404 from './images/e404.png';
 
 
 const NotFound = () => {
-    return ( 
+     console.log('URL not found');
+     return ( 
         <div className="not-found">
              <h2>Enhorabuena, has roto Internet.</h2>
              <img src={e404} className="App-logo" alt="logo" />

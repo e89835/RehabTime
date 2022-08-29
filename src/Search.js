@@ -8,6 +8,8 @@ const SearchBlog = ({ searchQuery, setSearchQuery }) => {
         e.preventDefault();
     };
 
+    
+    console.log('Search blog');
     return (
       <div className="search">
         <form
@@ -32,10 +34,11 @@ const SearchBlog = ({ searchQuery, setSearchQuery }) => {
             <button type="submit">Buscar</button>
         </form>
 
+        
+
       </div>
      );
 
 }
-    
  
 export default SearchBlog;

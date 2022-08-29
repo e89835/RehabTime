@@ -14,6 +14,7 @@ import itobillo2 from "./images/itobillo2.jpg";
 
 
 const Images = [
+    { id: 0, src: idefault, title: 'idefault', description: 'idefault' },
     { id: 1, src: ibrazo1, title: 'ibrazo1', description: 'ibrazo1' },
     { id: 2, src: ibrazo2, title: 'ibrazo2', description: 'ibrazo2' },
     { id: 3, src: icuello, title: 'icuello', description: 'icuello' },

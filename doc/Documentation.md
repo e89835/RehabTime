@@ -402,6 +402,7 @@ Para un uso futuro, y automatizar la subida a Docker Hub, nos creamos el siguien
 ![image](https://user-images.githubusercontent.com/91733073/185760812-ad0683fb-08ec-4a94-b71a-7bf726b33ead.png)
 
 Al lanzar el script, necesitamos poner dos argumentos, siendo estos nuestro usuario y contraseña.
+Este método fue el usado inicialmente, pero por tediosidad, se decide usar GitHub Actions para la publicación de la imagen Docker. Este [enlace](https://github.com/e89835/RehabTime/blob/main/doc/Documentation.md#automatic-updates) muestra el detalle.
 
 ## GitHub Container Registry
 Elegimos GitHub Container Registry ([GHCR](https://docs.github.com/en/packages)) que es una versión mejorada y rediseñada de paquetes de GitHub. Además de reemplazar al servicio Paquetes Docker representa un cambio fundamental en la forma que GitHub va a proporcionar paquetes a sus usuarios, dado que vincula los paquetes a organizaciones y cuentas en lugar de repositorios. 
@@ -440,6 +441,59 @@ Con lo que ahora podemos acceder directamente a través del [enlace público](ht
 ![image](https://user-images.githubusercontent.com/91733073/185761440-fb17637f-5b4e-40ac-8bf8-96aaa0cc8d75.png)
 
 ![image](https://user-images.githubusercontent.com/91733073/185761449-325c8117-5ab6-4dcb-81b4-091248163b38.png)
+
+## Automatic Updates
+Elegimos usar [GitHub Actions](https://github.com/features/actions) para publicar la imagen de Docker automáticamente en vez del uso del script de PowerShell, por su integración automática al hacer un _pull request_ o _pull_. 
+
+### Docker Action
+Para crear una GitHub Action con Docker, primero generamos los secretos usuario y contraseña. Para ello, nos vamos a _Settings/Actions/Secret/New Secret_ y ponemos el usuario y la contraseña:
+
+![image](https://user-images.githubusercontent.com/91733073/187301935-1d09c6db-8a49-4fe0-8053-792694f888b4.png)
+
+Para la contraseña, nos vamos a DockerHub y generamos un Token:
+
+![image](https://user-images.githubusercontent.com/91733073/187301986-784799ab-966d-418a-b250-a2a80be7566b.png)
+
+Copiamos el Token y lo añadimos en GitHub:
+
+![image](https://user-images.githubusercontent.com/91733073/187302190-c5a8556b-4d31-4378-bead-a29397f7c69a.png)
+
+![image](https://user-images.githubusercontent.com/91733073/187302217-99f0c8a0-923b-4e75-a4de-b075eac8be5f.png)
+
+Ahora, en Actions, seleccionamos Docker Image y escribimos la acción de la publicación:
+
+![image](https://user-images.githubusercontent.com/91733073/187302276-2b05f81c-33e4-4449-9a8f-b78b54ec2b27.png)
+
+Ahora esperamos a que se ejecute:
+
+![image](https://user-images.githubusercontent.com/91733073/187302306-0e001d9c-7fa4-4432-bbba-f16fc05211d0.png)
+
+Y pasen los test correctamente:
+
+![image](https://user-images.githubusercontent.com/91733073/187302423-73f14505-e717-41a7-80c7-affb216c9732.png)
+
+### GHCR Action
+Para crear la Acción para publicar en GitHub Container Registry, nos vamos en GitHub a _Settings/Developer settings/PAT_ y generamos un Token de Acceso Personal.
+
+En GitHub, en _Settings/Actions/Secret/New Secret_ añadimos el secreto como queda:
+
+![image](https://user-images.githubusercontent.com/91733073/187302830-8cb7d31a-135f-42dc-afa3-18bab9dfa14a.png)
+
+Ahora añadimos la acción en el apartado Actions, escribiéndo el código de la acción:
+
+![image](https://user-images.githubusercontent.com/91733073/187302937-590d6286-1e9c-41e0-ab8d-50a3e3fda3a0.png)
+
+Hacemos _commit_ y vemos que se empiezan a ejecutar todas las acciones, incluida la GHCR recién creada:
+
+![image](https://user-images.githubusercontent.com/91733073/187303015-c216302c-1022-48fa-b1fc-94f26714daef.png)
+
+Finalmente, esperamos a que termine todo correctamente:
+
+![image](https://user-images.githubusercontent.com/91733073/187303042-228541fb-fdd8-4064-9dfa-524ea9290295.png)
+
+
+
+
 
 
 

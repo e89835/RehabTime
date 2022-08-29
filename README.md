@@ -20,6 +20,8 @@ Bienvenid@ a la página principal del proyecto RehabTime, dentro de CC en la con
 
 - Para la Integración Continua, se usa [Travis CI](https://app.travis-ci.com/github/e89835/RehabTime) y [Circle CI](https://app.circleci.com/pipelines/github/e89835/RehabTime). También se usa [Docker + Travis CI](https://github.com/e89835/RehabTime/blob/main/doc/Documentation.md#docker--travis-ci). Para más detalle ver la [documentación del H4](https://github.com/e89835/RehabTime/blob/main/doc/Documentation.md#rehabtime---hito-4).
 
+- Para el microservicio, se usa [React](https://en.reactjs.org/). Para la API, usaremos la [API REST](https://github.com/e89835/RehabTime/blob/main/doc/Documentation.md#api-rest) con el método [**fetch**](https://github.com/e89835/RehabTime/blob/main/doc/Documentation.md#api-fetch). Las buenas prácticas se pueden ver [aquí](https://github.com/e89835/RehabTime/blob/main/doc/Documentation.md#buenas-pr%C3%A1cticas). Para el uso de logs, usaremos [**console.log**](https://github.com/e89835/RehabTime/blob/main/doc/Documentation.md#logs), y para los test, la suite anteriormente mencionada. Para más detalle vr la [documentación del H5](https://github.com/e89835/RehabTime/blob/main/doc/Documentation.md#rehabtime---hito-5).
+
 - En el siguiente enlace se encuentra el [MVP](https://github.com/e89835/RehabTime/blob/main/doc/MVP.md).
 
 - En este enlace se encuentran los [objetivos de los Hitos](https://github.com/e89835/RehabTime/blob/main/doc/Objectives.md) alcanzados. 

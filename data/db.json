@@ -10,8 +10,8 @@
       "part": "Cuello",
       "type": "Rehabilitación",
       "comments": [
-        "Comentario 1 test",
-        "Comentario 2 test 2"
+        "30/8/2022, 11:35:55 - Dificultad: baja. Comentario 1 test",
+        "30/8/2022, 11:37:01 - Dificultad: baja. Comentario 2 test 2"
       ],
       "id": 1
     },
@@ -28,37 +28,67 @@
       "id": 2
     },
     {
-      "title": "qwert",
-      "body": "qwert",
+      "title": "Ejercicio Brazo",
+      "body": "Arrodíllese y ate una banda elástica a la parte inferior de una puerta o de otro punto bajo de anclaje.\nCon los omóplatos hacia abajo y hacia atrás, lleve los brazos a 45 grados con respecto al cuerpo para formar una (A).\nMantenga la posición 10 segundos y repita 5 veces.",
       "author": "juanjo",
       "likes": 0,
-      "image": "idefault",
-      "difficulty": "",
-      "part": "cuello",
+      "image": "ibrazo1",
+      "difficulty": "moderada",
+      "part": "brazo",
       "type": "rehabilitacion",
-      "comments": [
-        "28/8/2022, 20:42:13 - Dificultad: . test",
-        "28/8/2022, 20:42:18 - Dificultad: baja. test",
-        "28/8/2022, 20:42:19 - Dificultad: baja. test",
-        "28/8/2022, 20:42:49 - Dificultad: muy baja. qwer",
-        "28/8/2022, 20:42:55 - Dificultad: alta. as"
-      ],
-      "id": 3
+      "comments": [],
+      "id": 5
     },
     {
-      "title": "ttt",
-      "body": "ttt",
+      "title": "Ejercicio espalda",
+      "body": "Acostarse de lado en el suelo, con las rodillas flexionadas. Imaginarse acostado en el centro de un reloj con la cabeza apuntando a las 12 h.\nLlevar el brazo a la posición de 12 h, hasta sentir un estiramiento agradable a lo largo del tronco. Mantener la posición por algunos instantes.\nMantener las piernas en la misma posición, girar el tronco y deslizar el brazo en el suelo (en sentido horario) hasta sentir un estiramiento agradable en el hombro o en el pecho.\nMantener el estiramiento por algunos instantes.\nRepetir el ejercicio siguiendo las indicaciones.\nMantener la mano en el suelo en todo momento, con el fin de maximizar los beneficios del estiramiento.",
+      "author": "juanjo",
+      "likes": 7,
+      "image": "iespalda",
+      "difficulty": "moderada",
+      "part": "espalda",
+      "type": "rehabilitacion",
+      "comments": [
+        "1/9/2022, 12:40:14 - Dificultad: baja. Este es un ejemplo de comentario 1.",
+        "1/9/2022, 12:40:39 - Dificultad: alta. Ejemplo de comentario 2"
+      ],
+      "id": 6
+    },
+    {
+      "title": "Ejercicio muñecas",
+      "body": "Coloque el antebrazo sobre una mesa o un apoyabrazos de una silla, sin apoyar la muñeca.\nSujete un martillo por el mango y gire el antebrazo, para llevar la palma hacia abajo y hacia arriba.\nPuede aumentar la dificultad, sujetando más lejos la cabeza del mango del martillo.",
+      "author": "juanjo",
+      "likes": 0,
+      "image": "imuneca1",
+      "difficulty": "moderada",
+      "part": "muñeca",
+      "type": "rehabilitacion",
+      "comments": [],
+      "id": 7
+    },
+    {
+      "title": "Ejercicio tobillo",
+      "body": "Este movimiento consiste en llevar la punta del pie hacia adentro, con el pie levado y ayudados de una banda elástica. Puedes realizar repeticiones o iniciar manteniendo la posición isométrica.",
+      "author": "juanjo",
+      "likes": 0,
+      "image": "itobillo1",
+      "difficulty": "fácil",
+      "part": "tobillo",
+      "type": "rehabilitacion",
+      "comments": [],
+      "id": 8
+    },
+    {
+      "title": "Ejercicio pierna",
+      "body": "Párese con las rodillas flexionadas 45 grados e incline un poco el tronco hacia adelante.\nMantenga la cabeza alineada con el tronco y mantenga esa posición.\nSi su equilibrio disminuye, apoye las manos en el respaldo de una silla.\nPara progresar en el ejercicio, flexione las rodillas a 90 grados.",
       "author": "juanjo",
       "likes": 0,
       "image": "idefault",
       "difficulty": "fácil",
-      "part": "brazo",
-      "type": "rehabilitacion",
-      "comments": [
-        "28/8/2022, 20:44:09 - Dificultad: muy baja. ",
-        "28/8/2022, 20:45:24 - Dificultad: muy baja. 12"
-      ],
-      "id": 4
+      "part": "pierna",
+      "type": "potenciación",
+      "comments": [],
+      "id": 9
     }
   ]
 }

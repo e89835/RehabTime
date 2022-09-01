@@ -21,4 +21,4 @@ entidad:
 fichero_tareas:
   - doc/fichero_tareas
   
-  make: npm run test
+make: npm run test

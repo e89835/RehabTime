@@ -132,6 +132,41 @@ const handleClickDelete= () => {
 ```
 El uso de la API está alineada con las Historias de Usuario: [HU1](https://github.com/e89835/RehabTime/blob/main/doc/US1.md), [HU2](https://github.com/e89835/RehabTime/blob/main/doc/US2.md), [HU4](https://github.com/e89835/RehabTime/blob/main/doc/US4.md) y [HU5](https://github.com/e89835/RehabTime/blob/main/doc/US5.md).
 
+## Postman
+Para comprobar las llamadas a la API de forma externa, usaremos [Postman](https://www.postman.com/), que es un programa para realizar llamadas a la API.
+Comenzamos con la llamada **GET**. Vemos que se devuelven todas las entradas de la base de datos, con _STATUS 200: OK_. 
+
+![image](https://user-images.githubusercontent.com/91733073/187899086-beb37ba2-760d-4f53-923e-c1fd1103c89d.png)
+
+Si quisiéramos los detalles de una entrada, bastaría con añadir el identificador al final de la llamada a la API (_…/blogs/id_).
+
+![image](https://user-images.githubusercontent.com/91733073/187899107-a7796129-231e-4b5f-9a30-0b6e04729d22.png)
+
+El siguiente método es **POST**, poniendo los datos en el cuerpo de la llamada. Podemos ver la respuesta en la parte inferior de la imagen.
+
+![image](https://user-images.githubusercontent.com/91733073/187899378-aae22084-df43-41cf-9962-dbdd3b7bb826.png)
+
+Vemos que devuelve el _STATUS 201: Created_. Nos vamos a nuestra base de datos para ver el ejercicio creado:
+
+![image](https://user-images.githubusercontent.com/91733073/187899497-319bcf8d-8b6d-429d-a261-0417dd0561a8.png)
+
+A continuación, hacemos un **PUT** sobre la última entrada, modificando algunos datos para comprobar su funcionamiento.
+
+![image](https://user-images.githubusercontent.com/91733073/187899713-37c1eaf1-68d6-4723-a336-30bf871738a0.png)
+
+Vemos que devuelve el _STATUS 200: OK_. Vemos la modificación en nuestra base de datos:
+
+![image](https://user-images.githubusercontent.com/91733073/187899796-97746be3-5306-4693-8dec-db6e676c0824.png)
+
+Por último, hacemos un **DELETE**. Para esta llamada debemos poner el identificador de la entrada que deseemos eliminar. Obtendremos los corchetes vacíos como respuesta correcta de la llamada.
+
+![image](https://user-images.githubusercontent.com/91733073/187899864-e4dfc122-a8f3-4f50-879f-c874e451a672.png)
+
+Vemos que devuelve el _STATUS 200: OK_. Comprobamos la eliminación en la base de datos:
+
+![image](https://user-images.githubusercontent.com/91733073/187899937-348d9f8c-7c34-49dd-b5e1-b963c76edc88.png)
+
+
 ## Buenas prácticas
 - Como buenas prácticas se usa una configuración distribuida, separando el funcionamiento de la parte front-end y back-end.
 - En caso de no poder entablar comunicación, saldrá un mensaje de error: _Failed to fetch_.

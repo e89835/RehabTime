@@ -19,4 +19,9 @@ make installdeps:
 	- npm install styled-components
 	- npm install --save-dev @testing-library/react
 	- npm install --save-dev @testing-library/jest-dom
-  
+ 
+ make install:
+	- npm install react-router-dom@5
+	- npm install styled-components
+	- npm install --save-dev @testing-library/react
+	- npm install --save-dev @testing-library/jest-dom

@@ -1,6 +1,8 @@
 # CE22 H3
 FROM node:10-alpine as base
 
+ENV CI=true
+
 WORKDIR /code
 
 COPY package.json package.json
@@ -11,7 +13,7 @@ RUN npm ci
 COPY . .
 CMD [ "npm", "run", "test" ]
 
-FROM base as prod
-RUN npm ci --production
-COPY . .
-CMD [ "node", "server.js" ]
+#FROM base as prod
+#RUN npm ci --production
+#COPY . .
+#CMD [ "node", "server.js" ]

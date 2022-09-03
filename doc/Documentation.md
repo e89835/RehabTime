@@ -1,6 +1,189 @@
 # Documentation
 En este apartado está una documentación extendida de la realización de cada uno de los hitos.
 
+# Rehabtime - Hito 6
+## Estructura del clúster
+El clúster se compondrá de tres partes:
+- La parte de almacenamiento de datos.
+- La parte de ejecución de los test.
+- La parte de ejecución de la aplicación.
+
+De esta manera, se cubre la totalidad de opciones, desde la ejecución de test, la ejecución de la aplicación y la ejecución de la base de datos, hasta a la separación de cada uno de los módulos. Cabe mencionar que dentro de esta separación no entraría la parte de test en un entorno de producción real, al ser previo a la publicación de la aplicación final. En cualquier caso, se añade para comprobar la funcionalidad de la aplicación dentro de la asignatura.
+
+## Contenedores docker-compose
+El fichero `docker-compose.yaml` se compone de tres contenedores:
+- La imagen de test es la publicada en [DockerHub](https://hub.docker.com/repository/docker/e89835/rehabtime) por el alumno a lo largo de este proyecto: `e89835/rehabtime:latest`.
+- La imagen de almacenamiento de datos es [clue/json-server](https://github.com/clue/docker-json-server). Esta imagen publicada en [DockerHub](https://hub.docker.com/r/clue/json-server) por Cristian Luck, proporciona un servidor de pega basado en JSON, en la ruta `data/db.json`. Esta imagen pública facilita en gran medida la ejecución del contenedor de la base de datos.
+
+  Si quisiéramos ejecutar sólo el docker, el comando quedaría: `docker run -p 8000:80 -v C:/Users/JuanJo/Documents/GitHub/rehabtime/data/db.json:/data/db.json clue/json-server`. 
+  
+  Podemos ver la ejecución del contenedor: 
+	
+![image](https://user-images.githubusercontent.com/91733073/188267635-5e409762-c488-40e2-9df2-5ce3eb941935.png)
+
+- Por último, para el contenedor de la aplicación, el alumno sube la imagen de la aplicación final en [DockerHub](https://hub.docker.com/repository/docker/e89835/rehabtime) cambiando la etiqueta de _latest_ a _app_:  `e89835/rehabtime:app`. 
+
+## Documentación docker-compose
+El fichero `docker-compose.yaml` queda de la siguiente manera:
+```
+version: '3'
+
+services:
+  rt-db:
+    image: clue/json-server
+    container_name: rt-db
+    volumes:
+      - ./data/db.json:/data/db.json
+    ports:
+      - 8000:80
+    
+  rt-test:
+    image: "e89835/rehabtime:latest"
+    container_name: rt-test
+    
+  rt-app:
+    image: "e89835/rehabtime:app"
+    container_name: rt-app
+    ports:
+     - 3000:3000
+```
+Veamos ahora qué significa:
+- `version: 3` indica la versión del archivo _compose_, la última es la 3. Podemos ver más detalles en la [documentación oficial](https://docs.docker.com/compose/compose-file/compose-versioning/).
+- `services` a partir de esta variable podemos poner todos los servicios (imágenes) que se desean ejecutar. 
+  En nuestro caso, hay tres:
+   - **rt-db**: Contiene el alamacenamiento de los datos simulando un servidor JSON.
+      - `image`: define la imagen docker que será la base del contenedor. En nuestro caso, se coge la imagen pública _clue/json-server_ .
+      - `container_name`: indica el nombre que tendrá el contenedor.
+      - `volumes`: se refiere a los [volúmenes Docker](https://docs.docker.com/storage/volumes/) que son los usados para almacenamiento, donde indicamos el volumen a crear del contenedor en _compose_ a la izquierda y a la derecha el directorio dentro del contenedor Docker. Al usar la imagen pública _clue/json-server_ ambas son idénticas.
+      - `ports`: aquí se asignan los puertos desde nuestro ordenador (8000, izquierda) al puerto expuesto del contenedor (80, derecha).
+   - **rt-test**: este contenedor usará la imagen con los tests de la aplicación publicada por el alumno en Docker Hub. Esta imagen se ejecuta sólo una vez, terminando una vez pasen todos los tests.
+   - **rt-app**: este contenedor se usará para la ejecución de la aplicación final. Se puede usar un [navegador](http://localhost:3000/) para comprobar el funcionamiento de la aplicación.
+      - `image`: define la imagen docker que será la base del contenedor. En nuestro caso, se coge la imagen publicada por el alumno _e89835/rehabtime:app_ .
+      - `container_name`: indica el nombre que tendrá el contenedor.
+      - `ports`: aquí se asignan los puertos desde nuestro ordenador (3000, izquierda) al puerto expuesto del contenedor (3000, derecha).
+
+## Testeo fichero composición
+Para comprobar la correcta ejecución del fichero `docker-compose.yaml`, procedemos a VS Code:
+
+![image](https://user-images.githubusercontent.com/91733073/188267962-bfeb05c1-2620-4350-bd29-039878edc1d9.png)
+
+Y a lanzarlo desde nuestra terminal usando el comando `docker-compose up`. Vemos que se crean los tres contenedores, y empiezan a salir los mensajes de cada contenedor:
+
+![image](https://user-images.githubusercontent.com/91733073/188267987-4a511bba-e073-4329-8875-104da0d1e3c0.png)
+
+Justo después, terminan de ejecutarse los test correctamente, con lo que se corta el contenedor _rt-test_: _rt_test exited with code 0_: 
+
+![image](https://user-images.githubusercontent.com/91733073/188267993-d6250cc3-03bb-4a59-a10f-9927bb50c887.png)
+
+Ahora, nos vamos a la aplicación Docker y podemos ver que los contenedores se están ejecutando bajo la composición del final _rehabtime_: 
+
+![image](https://user-images.githubusercontent.com/91733073/188268003-1b0ed2c5-1b20-483a-bb9f-13e464321917.png)
+
+Una vez terminado el test de la aplicación termina el contenedor _rt-test_:
+
+![image](https://user-images.githubusercontent.com/91733073/188268010-47c4838a-7424-408d-852b-e203fbb8c608.png)
+
+Cabe destacar que los contenedores _rt-db_ y _rt-app_ se ejecutan en modo _watcher_, esto significa que a no ser que lo paremos manualmente, siempre se ejecutarán. Para hacer la parada, hacemos `CRTL + C` desde nuestra terminal, donde se nos indican que han parado los contenedores.
+
+![image](https://user-images.githubusercontent.com/91733073/188268023-916cffe2-74c6-4bd0-bcf9-d65969824007.png)
+
+Antes de terminar la ejecución, se comprueba también el funcionamiento desde el navegador de la aplicación y la base de datos, así como el uso de la API con Postman:
+
+![image](https://user-images.githubusercontent.com/91733073/188268038-7acecfd9-a4d0-460f-b6a0-bf32263515fd.png)
+
+Usando la API en Postman, método **GET**:
+
+![image](https://user-images.githubusercontent.com/91733073/188268039-75a0db6d-18c3-4365-ab56-25e73b6a3720.png)
+
+Usando la API en Postman, Método **POST**:
+
+![image](https://user-images.githubusercontent.com/91733073/188268511-52cc3f52-61cf-4aa4-b39b-e6cd2b06a265.png)
+
+## Pruebas de velocidad, grado de terminación y despliegue cloud
+En este apartado veremos las pruebas de prestaciones de la aplicación, el grado de terminación y el despliegue a un servicio cloud. 
+		
+### Grado de terminación
+La aplicación se encuentra completamente terminada, con funcionalidad completa y desplegada en la nube, pudiendo usarse el contenedor publicado en [Docker Hub](https://hub.docker.com/layers/e89835/rehabtime/app/images/sha256-c34c6cd19115971585b67e85b14c6ab69a1b5378de1885a3344c09c228f7ba7a?context=repo) `e89835/rehabtime:app` y también siendo accesible como aplicación web desde cualquier navegador conectado a internet en el enlace de [Netlify](https://e89835-rehabtime.netlify.app/).
+	
+### Despliegue Cloud
+Para el despliegue como aplicación en cloud, se usa la plataforma [Netlify](https://www.netlify.com/). Netlify es una empresa de computación en la nube que ofrece servicios de alojamiento y backend sin servidor. La empresa proporciona alojamiento para sitios web cuyos archivos de origen se almacenan en Git y luego se generan en archivos de contenido web estático, servidos a través de una red de entrega de contenido. La empresa posteriormente amplió los servicios para incluir sistemas de gestión de contenido y funciones de computación sin servidor para manejar sitios web con funciones interactivas.
+
+Primero accedemos a la web y iniciamos sesión desde GitHub:
+
+![image](https://user-images.githubusercontent.com/91733073/188268086-55318870-c98f-4c27-be9d-f4a4321d82bc.png)
+
+Autorizamos el acceso:
+
+![image](https://user-images.githubusercontent.com/91733073/188268091-562aedcb-712a-47bf-8886-4d5c0ca850b3.png)
+
+Respondemos las preguntas:
+
+![image](https://user-images.githubusercontent.com/91733073/188268098-ca5aa5df-3003-4db7-9772-100fa7dcee88.png)
+
+Volvemos a autorizar:
+
+![image](https://user-images.githubusercontent.com/91733073/188268110-f0457985-af9c-4dd7-846e-ba02b6ff29bb.png)
+
+Instalamos Netlify en todos los repositorios:
+
+![image](https://user-images.githubusercontent.com/91733073/188268135-bcdaeabe-ddbe-41ab-9aea-be15a725ffdd.png)
+
+Seleccionamos el repositorio:
+
+![image](https://user-images.githubusercontent.com/91733073/188268145-6db09dae-cc1d-4256-ab0e-b1471844fad6.png)
+
+Y desplegamos:
+
+![image](https://user-images.githubusercontent.com/91733073/188268151-22566ff0-a995-4de9-8902-3f70581ccec3.png)
+
+También se puede hacer de forma tradicional, nos vamos a VS Code e instalamos netlify:
+
+![image](https://user-images.githubusercontent.com/91733073/188268175-dc995d51-9c28-496a-9bf7-9646a0430a0a.png)
+
+Desplegamos desde la terminal:
+
+![image](https://user-images.githubusercontent.com/91733073/188268186-24d72926-4b2b-4149-be79-cf0884492ae4.png)
+
+Autorizamos el acceso:
+
+![image](https://user-images.githubusercontent.com/91733073/188268194-1d19357f-5fbb-45c4-a278-8c47aa8c2d42.png)
+
+![image](https://user-images.githubusercontent.com/91733073/188268204-3b8d4ff3-3fb3-48a6-9f4f-d1820d9dde6e.png)
+
+Ahora desplegamos con el comando `netlify deploy`:
+
+![image](https://user-images.githubusercontent.com/91733073/188268219-2f82156f-cd32-422c-a825-e35667986c14.png)
+
+Y la subimos con `netlify deploy --prod`. Ahora podemos acceder a nuestra aplicación web publicada en el [enlace](https://e89835-rehabtime.netlify.app/). 
+
+![image](https://user-images.githubusercontent.com/91733073/188268225-77c5c0a9-4938-41e5-9fa1-2e9faafd256a.png)
+
+Por último, los detalles del sitio Netlify se pueden ver [aquí](https://app.netlify.com/sites/e89835-rehabtime/overview).
+
+![image](https://user-images.githubusercontent.com/91733073/188268581-2ecfcfb6-f23f-4f43-b902-190a34c3c0cc.png)
+
+
+### Pruebas de rendimiento
+	
+Para analizar el rendimiento, se usa la herramienta [Lighthouse](https://web.dev/performance-scoring/). 
+Lighthouse es una herramienta de auditoría de rendimiento de código abierto escrita en Javascript y que se ejecuta en Node.js. Fue desarrollado por Google y está disponible en [GitHub](https://github.com/GoogleChrome/lighthouse). Lighthouse permite realizar auditorías sobre el rendimiento de un sitio web o aplicación web. Google utiliza Lighthouse como parte de su proceso de auditoría para la búsqueda web de Google. 
+	
+Consiste en una serie de auditorías evaluando el rendimiento, accesibilidad, aplicaciones web progresivas, SEO y más, y puede ejecutarse en cualquier página web, independientemente de si está alojada en un servidor propio  o en un servicio público como las páginas de Google o GitHub. Cada auditoría contiene documentos de referencia con la explicación de por qué la auditoría es importante y cómo solucionarla.
+	
+Se han generado distintos documentos:
+- [Lighthouse Docker expandido](https://github.com/e89835/RehabTime/blob/main/doc/H6/RehabTime_Lighthouse_Docker_Expanded.pdf).
+- [Lighthouse Docker resumido](https://github.com/e89835/RehabTime/blob/main/doc/H6/RehabTime_Lighthouse_Docker_Summary.pdf).
+- [Lighthouse Netlify expandido](https://github.com/e89835/RehabTime/blob/main/doc/H6/RehabTime_Lighthouse_Netlify_Expanded.pdf).
+- [Lighthouse Netlify resumido](https://github.com/e89835/RehabTime/blob/main/doc/H6/RehabTime_Lighthouse_Netlify_Summary.pdf).
+	
+Dentro de los documentos, la aplicación desplegada en Docker obtiene una puntuación de 97 en rendimiento, 100 en accesibilidad y SEO y 92 en prácticas recomendadas.
+La aplicación web desplegada en Netlify obtiene una puntuación de 99 en rendimiento y 100 en accesibilidad, prácticas recomendadas y SEO.
+
+
+
+
+
+
 # Rehabtime - Hito 5
 ## React
 Según la encuesta de [desarrolladores de StackOverflow de 2021](https://insights.stackoverflow.com/survey/2021), [React](https://insights.stackoverflow.com/survey/2021#section-most-popular-technologies-web-frameworks) se encuentra como ganador en la categoría de frameworks web, con más de un 40% de votos.

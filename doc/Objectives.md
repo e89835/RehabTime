@@ -43,3 +43,10 @@
 - [X] Uso de logs y justificación de la herramienta.
 - [X] Test correctos con HU.
 
+
+## RehabTime - Hito 5
+- [X] Documentar y justificar la estructura del clúster.
+- [X] Documentar y justificar la configuración de los contenedores.
+- [X] Documentar el fichero de composición.
+- [X] Testear el fichero de composición.
+- [X] Pruebas de velocidad, grado de terminación y despliuege a algún servicio cloud.

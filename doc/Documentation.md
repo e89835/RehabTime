@@ -162,6 +162,12 @@ Por último, los detalles del sitio Netlify se pueden ver [aquí](https://app.ne
 
 ![image](https://user-images.githubusercontent.com/91733073/188268581-2ecfcfb6-f23f-4f43-b902-190a34c3c0cc.png)
 
+El despliegue cloud lanza el frontend de la aplicación, para lanzar el backend (servidor JSON), podemos lanzar un contenedor público con el comando: 
+
+`docker run -p 8000:80 -v C:/Users/JuanJo/Documents/GitHub/rehabtime/data/db.json:/data/db.json clue/json-server`
+
+![image](https://user-images.githubusercontent.com/91733073/188269737-35bd3b8d-214b-4767-a3e0-b62882d86eba.png)
+
 
 ### Pruebas de rendimiento
 	

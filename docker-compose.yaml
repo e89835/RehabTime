@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  rt-db:
+    image: clue/json-server
+    container_name: rt-db
+    volumes:
+      - ./data/db.json:/data/db.json
+    ports:
+      - 8000:80
+    
+  rt-test:
+    image: "e89835/rehabtime:latest"
+    container_name: rt-test
+    
+
+  rt-app:
+    image: "e89835/rehabtime:app"
+    container_name: rt-app
+    ports:
+     - 3000:3000
